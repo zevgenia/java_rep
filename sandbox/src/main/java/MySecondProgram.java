@@ -1,5 +1,3 @@
-package ru.stqa.rep.sandbox;
-
 public class MySecondProgram {
 
   public static void main(String[] args) {
