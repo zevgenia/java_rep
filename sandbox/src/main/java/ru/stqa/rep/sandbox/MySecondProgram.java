@@ -2,8 +2,8 @@ package ru.stqa.rep.sandbox;
 
 public class MySecondProgram {
 
-    public static void main(String[] args) {
+  public static void main(String[] args) {
 
-	System.out.println("Greeting, world!");
-    }
+    System.out.println("Greeting, world!");
+  }
 }
