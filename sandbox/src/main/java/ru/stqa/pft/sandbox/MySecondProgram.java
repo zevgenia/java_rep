@@ -1,6 +1,6 @@
 package ru.stqa.pft.sandbox;
 
-public class MySecondProgram1 {
+public class MySecondProgram {
 
   public static void main(String[] args) {
 
