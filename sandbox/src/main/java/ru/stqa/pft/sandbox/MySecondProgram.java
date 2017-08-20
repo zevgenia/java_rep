@@ -25,14 +25,10 @@ public class MySecondProgram {
     Point p1 = new Point(5, 2);
     Point p2 = new Point(10, 12);
     System.out.println( "Расстояние между двумя точками с координатами " + "А("+ p1.x + ";" + p1.y + ") и В("+ p2.x +
-            ";" + p2.y + ") = " + distance( p1, p2));
+            ";" + p2.y + ") = " + p2.distance( p1));
 
   }
-  public static double distance(Point p1, Point p2) {
 
-    double d = (p2.x - p1.x) * (p2.x - p1.x) + (p2.y - p1.y) * (p2.y - p1.y);
-    return Math.sqrt(d);
-  }
 }
 
 
