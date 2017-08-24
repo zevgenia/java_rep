@@ -17,3 +17,6 @@ sandbox/build/classes/java/main/MySecondProgram.class
 sandbox/build/libs/sandbox.jar
 sandbox/build/tmp/jar/MANIFEST.MF
 .idea/misc.xml
+.idea/modules/java_rep-addressbook-web-tests_test.iml
+.idea/modules/java_rep-addressbook-web-tests_main.iml
+.idea/modules/addressbook-web-tests.iml
