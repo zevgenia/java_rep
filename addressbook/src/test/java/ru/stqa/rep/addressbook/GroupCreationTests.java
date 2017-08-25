@@ -1,6 +1,5 @@
 package ru.stqa.rep.addressbook;
 
-import org.openqa.selenium.firefox.FirefoxOptions;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
@@ -21,31 +20,31 @@ public class GroupCreationTests {
     @BeforeMethod
     public void setUp() throws Exception {
         wd = new FirefoxDriver();
-//        wd = new FirefoxDriver(new FirefoxOptions().setLegacy(true));
         wd.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
     }
     
     @Test
     public void GroupCreationTests() {
-        wd.get("http://localhost/addressbook/");
+        wd.get("http://localhost/addressbook/group.php");
         wd.findElement(By.name("user")).click();
         wd.findElement(By.name("user")).clear();
         wd.findElement(By.name("user")).sendKeys("admin");
+        wd.findElement(By.id("LoginForm")).click();
         wd.findElement(By.name("pass")).click();
         wd.findElement(By.name("pass")).clear();
         wd.findElement(By.name("pass")).sendKeys("secret");
         wd.findElement(By.xpath("//form[@id='LoginForm']/input[3]")).click();
         wd.findElement(By.linkText("groups")).click();
-        wd.findElement(By.name("new")).click();
+        wd.findElement(By.xpath("//div[@id='content']/form/input[4]")).click();
         wd.findElement(By.name("group_name")).click();
         wd.findElement(By.name("group_name")).clear();
-        wd.findElement(By.name("group_name")).sendKeys("test11");
+        wd.findElement(By.name("group_name")).sendKeys("new");
         wd.findElement(By.name("group_header")).click();
         wd.findElement(By.name("group_header")).clear();
-        wd.findElement(By.name("group_header")).sendKeys("test22");
+        wd.findElement(By.name("group_header")).sendKeys("new group");
         wd.findElement(By.name("group_footer")).click();
         wd.findElement(By.name("group_footer")).clear();
-        wd.findElement(By.name("group_footer")).sendKeys("test33");
+        wd.findElement(By.name("group_footer")).sendKeys("new footer");
         wd.findElement(By.name("submit")).click();
         wd.findElement(By.linkText("group page")).click();
     }
