@@ -5,14 +5,19 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class NavigationHelper extends BaseHelper {
 
-  public NavigationHelper(FirefoxDriver wd) {
-    super(wd);
-  }
+    public NavigationHelper(FirefoxDriver wd) {
+        super(wd);
+    }
 
-  public void gotoGroupPage() {
-    click(By.linkText("groups"));
-  }
-  public void gotoNewContact() {
-    click(By.linkText("add new"));
-  }
+    public void gotoGroupPage() {
+        click(By.linkText("groups"));
+    }
+
+    public void gotoNewContact() {
+        click(By.linkText("add new"));
+    }
+
+    public void gotoHomePage() {
+        click(By.linkText("home"));
+    }
 }

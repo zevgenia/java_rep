@@ -29,4 +29,16 @@ public class ContactHelper extends BaseHelper {
     type(By.name("byear"), contactData.getYear());
     type(By.name("notes"), contactData.getNote());
   }
+
+  public void selectContact() {
+    click(By.name("selected[]"));
+  }
+
+  public void initContactModification() {
+    click(By.xpath("//table[@id='maintable']/tbody/tr[2]/td[8]/a/img"));
+  }
+
+  public void updateContactForm() {
+    click(By.name("update"));
+  }
 }
