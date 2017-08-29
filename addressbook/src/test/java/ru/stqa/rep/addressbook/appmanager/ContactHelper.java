@@ -41,4 +41,9 @@ public class ContactHelper extends BaseHelper {
   public void updateContactForm() {
     click(By.name("update"));
   }
+
+  public void deleteSelectedContact() {
+    click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
+    wd.switchTo().alert().accept();
+  }
 }
