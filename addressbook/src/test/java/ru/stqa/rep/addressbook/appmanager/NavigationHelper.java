@@ -18,6 +18,8 @@ public class NavigationHelper extends BaseHelper {
     }
 
     public void gotoHomePage() {
-        click(By.linkText("home"));
+//        click(By.linkText("home"));
+        click(By.xpath("//div[@id='nav']//a[.='home']"));
+
     }
 }
