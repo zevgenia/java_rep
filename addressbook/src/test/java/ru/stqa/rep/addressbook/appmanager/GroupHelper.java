@@ -11,7 +11,8 @@ public class GroupHelper extends BaseHelper {
   }
 
   public void returnToGroupPage() {
-    click(By.linkText("group page"));
+//    click(By.linkText("group page"));
+    click(By.xpath("//div[@class='msgbox']//a[.='group page']"));
   }
 
   public void submitFormCreation() {

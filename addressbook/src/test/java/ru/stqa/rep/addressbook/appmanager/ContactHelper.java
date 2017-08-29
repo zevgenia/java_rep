@@ -11,7 +11,8 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void returnHomePage() {
-    click(By.linkText("home page"));
+//    click(By.linkText("home page"));
+    click (By.xpath("//div[@class='msgbox']//a[.='home page']"));
   }
 
   public void submitContactForm() {
