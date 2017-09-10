@@ -10,7 +10,7 @@ public class ContactData {
   private final String email;
   private final String year;
   private final String note;
-  private final String group;
+  private String group;
 
   public ContactData(String firstname, String middlname, String lastname, String address, String mobile, String home, String email, String year, String note, String group) {
     this.firstname = firstname;

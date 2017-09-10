@@ -16,7 +16,7 @@ public class ContactHelper extends BaseHelper {
 
   public void returnHomePage() {
 //    click(By.linkText("home page"));
-    click (By.xpath("//div[@class='msgbox']//a[.='home page']"));
+    click(By.xpath("//div[@class='msgbox']//a[.='home page']"));
   }
 
   public void submitContactForm() {
@@ -35,7 +35,8 @@ public class ContactHelper extends BaseHelper {
     type(By.name("notes"), contactData.getNote());
 
     if (creation) {
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup());
+//      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //нет списка групп
+      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); //есть список групп
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
@@ -57,4 +58,19 @@ public class ContactHelper extends BaseHelper {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
   }
+
+  public void createContact(ContactData contact, boolean b) {
+    fillContactForm(contact, b);
+    submitContactForm();
+    returnHomePage();
+
+  }
+
+  public boolean isThereAContact() {
+    if (isElementPresent(By.name("selected[]"))) {
+      return true;
+    } else
+      return false;
+  }
+
 }
