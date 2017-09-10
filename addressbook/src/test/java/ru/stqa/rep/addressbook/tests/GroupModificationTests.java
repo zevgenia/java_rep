@@ -15,14 +15,14 @@ public class GroupModificationTests extends TestBase {
       app.getGroupHelper().createGroup(new GroupData("Друзья", "Друзья", "Домашняя группа"));
     }
     int before = app.getGroupHelper().getGroupCount();
-    app.getGroupHelper().selectGroup();
+    app.getGroupHelper().selectGroup(0);
     app.getGroupHelper().initGroupModification();
     app.getGroupHelper().fillGroupForm(new GroupData("Друзья", null, null));
     app.getGroupHelper().submitGroupModification();
     app.getGroupHelper().returnToGroupPage();
     int after = app.getGroupHelper().getGroupCount();
     Assert.assertEquals(after, before);
-    System.out.println("Было: "+before+ " Стало: "+after);
-     }
+    System.out.println("Было: " + before + " Стало: " + after);
+  }
 
 }
