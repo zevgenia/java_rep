@@ -63,14 +63,9 @@ public class ContactHelper extends BaseHelper {
     fillContactForm(contact, b);
     submitContactForm();
     returnHomePage();
-
   }
-
   public boolean isThereAContact() {
-    if (isElementPresent(By.name("selected[]"))) {
-      return true;
-    } else
-      return false;
+    return isElementPresent(By.name("selected[]"));
   }
 
 }
