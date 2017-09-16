@@ -18,8 +18,8 @@ public class ContactModificationTests extends TestBase {
         }
         int before = app.getContactHelper().getContactCount();
         System.out.println("Количество контактов до " + before);
-        app.getContactHelper().selectContact();
-        app.getContactHelper().initContactModification ();
+        app.getContactHelper().selectContact(before - 1);
+        app.getContactHelper().initContactModification (before - 1);
         app.getContactHelper().fillContactForm(new ContactData("Надежда", null, "Сидорова", "ул.Изюмская, д.1, кв.130", "+7(000)123-12-12", "+7(495)123-12-12", "222@mail.ru", "1980", "домофон 130", null),false);
         app.getContactHelper().updateContactForm();
         app.getContactHelper().returnHomePage();
