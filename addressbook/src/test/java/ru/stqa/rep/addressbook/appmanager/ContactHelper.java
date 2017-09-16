@@ -15,7 +15,6 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void returnHomePage() {
-//    click(By.linkText("home page"));
     click(By.xpath("//div[@class='msgbox']//a[.='home page']"));
   }
 
@@ -57,6 +56,7 @@ public class ContactHelper extends BaseHelper {
   public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
+
   }
 
   public void createContact(ContactData contact, boolean b) {
@@ -64,11 +64,14 @@ public class ContactHelper extends BaseHelper {
     submitContactForm();
     returnHomePage();
   }
+
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
+//    return wd.findElements(By.tagName("input")."selected[]")).size();
+// By.tagName("input")).getAttribute("value")
   }
 }
