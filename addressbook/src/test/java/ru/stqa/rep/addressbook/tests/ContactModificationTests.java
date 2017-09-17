@@ -24,7 +24,7 @@ public class ContactModificationTests extends TestBase {
     System.out.println("Количество контактов до " + before.size());
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().initContactModification(before.size() - 1);
-    app.getContactHelper().fillContactForm(new ContactData("Надежда", null, "Сидорова",
+    app.getContactHelper().fillContactForm(new ContactData("Надежда", null, "Макарова",
             "ул.Изюмская, д.1, кв.130", "+7(000)123-12-12", "+7(495)123-12-12", "222@mail.ru",
             "1980", "домофон 130", null), false);
     app.getContactHelper().updateContactForm();
