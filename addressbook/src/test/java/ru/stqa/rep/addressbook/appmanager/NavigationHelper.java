@@ -26,7 +26,7 @@ public class NavigationHelper extends BaseHelper {
 
   public void gotoHomePage() {
   click(By.xpath("//div/div[3]/ul/li[1]/a"));
-//  click(By.xpath("//div[@id='nav']//a[.='home']"));
+  click(By.xpath("//div[@id='nav']//a[.='home']"));
 //  click(By.name("home"));
   }
 }
