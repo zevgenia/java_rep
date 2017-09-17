@@ -52,7 +52,7 @@ public class ContactHelper extends BaseHelper {
   }
 
   public void initContactModification(int index) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr["+(index+2)+"]/td[8]/a/img"));
+    click(By.xpath("//table[@id='maintable']/tbody/tr[" + (index + 2) + "]/td[8]/a/img"));
   }
 
   public void updateContactForm() {
@@ -82,12 +82,13 @@ public class ContactHelper extends BaseHelper {
 
   public List<ContactData> getContactList() {
     List<ContactData> contacts = new ArrayList<ContactData>();
-    List<WebElement>elements = wd.findElements(By.cssSelector("tr[name='entry']"));
-    for (WebElement element : elements){
-      String firstname = element.getText();
-      String lastname = element.getText();
-      ContactData contact = new ContactData(firstname, null,lastname,
-              null,null,null,null,null,null,null );
+    List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
+    for (WebElement element : elements) {
+      List<WebElement> cells = element.findElements(By.tagName("td"));
+      String firstname = cells.get(2).getText();
+      String lastname = cells.get(1).getText();
+      ContactData contact = new ContactData(firstname, null, lastname,
+              null, null, null, null, null, null, null);
       contacts.add(contact);
     }
 
