@@ -13,18 +13,16 @@ public class ContactCreationTests extends TestBase {
 
 
   public void testContactCreation() {
-    app.goTo().groupPage();
+//    app.goTo().groupPage();
     app.goTo().gotoHomePage();
-    List<ContactData> before = app.getContactHelper().getContactList();
-    System.out.println("Количество контактов до " + before.size());
+    List<ContactData> before = app.Contact().List();
     app.gotoNewContact();
     ContactData contact = new ContactData ("Надежда", "Ивановна", "Сидорова",
             "ул.Изюмская, д.1, кв.130", "+7(000)123-12-12", "+7(495)123-12-12", "222@mail.ru",
             "1980", "домофон 130", "Друзья");
-    app.getContactHelper().createContact(contact, true);
+    app.Contact().create(contact, true);
 
-    List<ContactData> after = app.getContactHelper().getContactList();
-    System.out.println("Количество контактов после " + after.size());
+    List<ContactData> after = app.Contact().List();
     Assert.assertEquals(after.size(), before.size() + 1);
 
     before.add(contact);
@@ -32,8 +30,5 @@ public class ContactCreationTests extends TestBase {
     before.sort(byId);
     after.sort(byId);
     Assert.assertEquals(before,after);
-    System.out.println("Сравниваем до"+before);
-    System.out.println("после "+after);
-
   }
 }

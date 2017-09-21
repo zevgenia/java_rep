@@ -24,7 +24,6 @@ public class GroupDeletionTests extends TestBase {
     app.group().delete(index);
     List<GroupData> after = app.group().List();
     Assert.assertEquals(after.size(), index);
-    System.out.println("Было: " + before.size() + " Стало: " + after.size());
 
     before.remove(index);
     Assert.assertEquals(before, after);

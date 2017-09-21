@@ -65,12 +65,16 @@ public class ContactHelper extends BaseHelper {
 
   }
 
-  public void createContact(ContactData contact, boolean b) {
+  public void create(ContactData contact, boolean b) {
     fillContactForm(contact, b);
     submitContactForm();
     returnHomePage();
   }
+  public void delete(int index) {
+    selectContact(index);
+    deleteSelectedContact();
 
+  }
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
@@ -80,7 +84,7 @@ public class ContactHelper extends BaseHelper {
 
   }
 
-  public List<ContactData> getContactList() {
+  public List<ContactData> List() {
     List<ContactData> contacts = new ArrayList<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement element : elements) {

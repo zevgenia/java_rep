@@ -10,13 +10,13 @@ import java.util.List;
 
 public class ContactModificationTests extends TestBase {
 
-  @BeforeMethod
-  public void ensurePrcondition() {
+    @BeforeMethod
 
+    public void endsurePrecondition() {
     app.goTo().gotoHomePage();
-    if (!app.getContactHelper().isThereAContact()) {
+    if (app.Contact().List().size() == 0) {
       app.goTo().gotoNewContact();
-      app.getContactHelper().createContact(new ContactData("Надежда", "Ивановна", "Сидорова",
+      app.Contact().create(new ContactData("Надежда", "Ивановна", "Сидорова",
               "ул.Изюмская, д.1, кв.130", "+7(000)123-12-12", "+7(495)123-12-12", "222@mail.ru",
               "1980", "домофон 130", "Друзья"), true);
     }
@@ -25,18 +25,18 @@ public class ContactModificationTests extends TestBase {
   @Test(enabled = true)
 
   public void ContactModification() {
-    List<ContactData> before = app.getContactHelper().getContactList();
+    List<ContactData> before = app.Contact().List();
     int index = before.size() - 1;
-    app.getContactHelper().selectContact(index);
-    app.getContactHelper().initContactModification(index);
+    app.Contact().selectContact(index);
+    app.Contact().initContactModification(index);
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Надежда", "Ивановна", "Макарова",
             "ул.Изюмская, д.1, кв.130", "+7(000)123-12-12", "+7(495)123-12-12", "222@mail.ru",
             "1980", "домофон 130", "Друзья");
-    app.getContactHelper().fillContactForm(contact, false);
-    app.getContactHelper().updateContactForm();
-    app.getContactHelper().returnHomePage();
+    app.Contact().fillContactForm(contact, false);
+    app.Contact().updateContactForm();
+    app.Contact().returnHomePage();
 
-    List<ContactData> after = app.getContactHelper().getContactList();
+    List<ContactData> after = app.Contact().List();
     Assert.assertEquals(after.size(), before.size());
 
     before.remove(index);
@@ -44,9 +44,6 @@ public class ContactModificationTests extends TestBase {
     Comparator<? super ContactData> byId = (c1, c2) -> Integer.compare(c1.getId(), c2.getId());
     before.sort(byId);
     after.sort(byId);
-
-    System.out.println("сравниваем до" + before);
-    System.out.println("после " + after);
 
     Assert.assertEquals(before, after);
 
