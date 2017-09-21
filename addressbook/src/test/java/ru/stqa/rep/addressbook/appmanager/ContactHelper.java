@@ -1,14 +1,11 @@
 package ru.stqa.rep.addressbook.appmanager;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.rep.addressbook.model.ContactData;
-import ru.stqa.rep.addressbook.model.GroupData;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,18 +67,26 @@ public class ContactHelper extends BaseHelper {
     submitContactForm();
     returnHomePage();
   }
+
   public void delete(int index) {
     selectContact(index);
     deleteSelectedContact();
-
   }
+
+  public void modify(ContactData contact, int index) {
+    selectContact(index);
+    initContactModification(index);
+    fillContactForm(contact, false);
+    updateContactForm();
+    returnHomePage();
+  }
+
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
   }
 
   public int getContactCount() {
     return wd.findElements(By.name("selected[]")).size();
-
   }
 
   public List<ContactData> List() {

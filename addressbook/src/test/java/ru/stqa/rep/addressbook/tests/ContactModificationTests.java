@@ -26,15 +26,11 @@ public class ContactModificationTests extends TestBase {
 
   public void ContactModification() {
     List<ContactData> before = app.Contact().List();
-    int index = before.size() - 1;
-    app.Contact().selectContact(index);
-    app.Contact().initContactModification(index);
     ContactData contact = new ContactData(before.get(before.size() - 1).getId(), "Надежда", "Ивановна", "Макарова",
             "ул.Изюмская, д.1, кв.130", "+7(000)123-12-12", "+7(495)123-12-12", "222@mail.ru",
             "1980", "домофон 130", "Друзья");
-    app.Contact().fillContactForm(contact, false);
-    app.Contact().updateContactForm();
-    app.Contact().returnHomePage();
+    int index = before.size() - 1;
+    app.Contact().modify(contact, index);
 
     List<ContactData> after = app.Contact().List();
     Assert.assertEquals(after.size(), before.size());
@@ -48,5 +44,7 @@ public class ContactModificationTests extends TestBase {
     Assert.assertEquals(before, after);
 
   }
+
+
 
 }

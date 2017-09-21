@@ -25,9 +25,7 @@ public class GroupModificationTests extends TestBase {
     GroupData group = new GroupData(before.get(index).getId(), "Друзья", null, null);
     app.group().modify(index, group);
     List<GroupData> after = app.group().List();
-
     Assert.assertEquals(after.size(), before.size());
-    System.out.println("Было: " + before.size() + " Стало: " + after.size());
 
     before.remove(index);
     before.add(group);
