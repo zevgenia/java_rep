@@ -8,14 +8,14 @@ import java.util.List;
 
 public class ContactDeletionTests extends TestBase {
 
-  @Test
+  @Test (enabled =  true)
 
   public void ContactDeletion() {
 
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().gotoHomePage();
 
     if (!app.getContactHelper().isThereAContact()) {
-      app.getNavigationHelper().gotoNewContact();
+      app.goTo().gotoNewContact();
       app.getContactHelper().createContact(new ContactData("Надежда", "Ивановна", "Сидорова",
               "ул.Изюмская, д.1, кв.130", "+7(000)123-12-12", "+7(495)123-12-12", "222@mail.ru",
               "1980", "домофон 130", "Друзья"), true);
@@ -25,7 +25,8 @@ public class ContactDeletionTests extends TestBase {
 
     app.getContactHelper().selectContact(before.size() - 1);
     app.getContactHelper().deleteSelectedContact();
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().groupPage();
+    app.goTo().gotoHomePage();
 
     List<ContactData> after = app.getContactHelper().getContactList();
     System.out.println("Количество контактов после " + after.size());

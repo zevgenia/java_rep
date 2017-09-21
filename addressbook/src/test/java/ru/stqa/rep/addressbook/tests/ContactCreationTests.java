@@ -5,14 +5,16 @@ import org.testng.annotations.Test;
 import ru.stqa.rep.addressbook.model.ContactData;
 
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
 
 public class ContactCreationTests extends TestBase {
 
-  @Test
+  @Test (enabled =  true)
+
+
   public void testContactCreation() {
-    app.getNavigationHelper().gotoHomePage();
+    app.goTo().groupPage();
+    app.goTo().gotoHomePage();
     List<ContactData> before = app.getContactHelper().getContactList();
     System.out.println("Количество контактов до " + before.size());
     app.gotoNewContact();

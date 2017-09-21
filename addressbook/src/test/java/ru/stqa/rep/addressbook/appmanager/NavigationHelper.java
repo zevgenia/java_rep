@@ -2,7 +2,6 @@ package ru.stqa.rep.addressbook.appmanager;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class NavigationHelper extends BaseHelper {
 
@@ -10,7 +9,7 @@ public class NavigationHelper extends BaseHelper {
     super(wd);
   }
 
-  public void gotoGroupPage() {
+  public void groupPage() {
 
     if (isElementPresent(By.tagName("h1"))
             && wd.findElement(By.tagName("h1")).getText().equals("Groups")
@@ -25,8 +24,8 @@ public class NavigationHelper extends BaseHelper {
   }
 
   public void gotoHomePage() {
-//  click(By.xpath("//div/div[3]/ul/li[1]/a"));
- click(By.xpath("//div[@id='nav']//a[.='home']"));
-//  click(By.name("home"));
+
+    click(By.xpath("//div[@id='nav']//a[.='home']"));
+
   }
 }
