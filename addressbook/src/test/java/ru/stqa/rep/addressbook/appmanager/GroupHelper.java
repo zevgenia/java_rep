@@ -38,11 +38,8 @@ public class GroupHelper extends BaseHelper {
     click(By.name("delete"));
   }
 
-  public void selectGroup(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
-  }
   private void selectGroupById(int id) {
-    wd.findElement(By.cssSelector("input[value='"+ id +"'")).click();
+    wd.findElement(By.cssSelector("input[value='"+ id +"']")).click();
   }
 
   public void initGroupModification() {

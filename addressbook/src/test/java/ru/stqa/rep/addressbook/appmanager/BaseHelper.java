@@ -14,10 +14,13 @@ public class BaseHelper {
   }
 
   protected void click(By locator) {
+
     wd.findElement(locator).click();
   }
   protected void type(By locator, String text) {
+    System.out.println("локатор "+locator);
     click(locator);
+
     if (text != null){
       String existingText = wd.findElement(locator).getAttribute("value");
       if (! text.equals(existingText)){

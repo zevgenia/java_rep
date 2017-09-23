@@ -6,6 +6,7 @@ import ru.stqa.rep.addressbook.model.ContactData;
 
 import java.util.Comparator;
 import java.util.List;
+import java.util.Set;
 
 public class ContactCreationTests extends TestBase {
 
@@ -15,7 +16,7 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
 //    app.goTo().groupPage();
     app.goTo().gotoHomePage();
-    List<ContactData> before = app.Contact().List();
+    Set<ContactData> before = app.Contact().all();
     app.gotoNewContact();
     ContactData contact = new ContactData().withFirstname("Надежда").withMiddlname("Ивановна")
             .withLastname("Сидорова").withAddress("ул.Изюмская, д.1, кв.130")
@@ -23,13 +24,11 @@ public class ContactCreationTests extends TestBase {
             .withEmail("222@mail.ru").withYear("1980").withNote("домофон 130").withGroup("Друзья");
     app.Contact().create(contact, true);
 
-    List<ContactData> after = app.Contact().List();
+    Set<ContactData> after = app.Contact().all();
     Assert.assertEquals(after.size(), before.size() + 1);
 
+    contact.withId(after.stream().mapToInt((g)->g.getId()).max().getAsInt());
     before.add(contact);
-    Comparator<? super ContactData> byId = (c1,c2) -> Integer.compare(c1.getId(), c2.getId()) ;
-    before.sort(byId);
-    after.sort(byId);
     Assert.assertEquals(before,after);
   }
 }

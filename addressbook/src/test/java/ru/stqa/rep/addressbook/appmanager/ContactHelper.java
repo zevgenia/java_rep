@@ -8,7 +8,9 @@ import org.testng.Assert;
 import ru.stqa.rep.addressbook.model.ContactData;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ContactHelper extends BaseHelper {
 
@@ -45,11 +47,21 @@ public class ContactHelper extends BaseHelper {
 
   public void selectContact(int index) {
     wd.findElements(By.name("selected[]")).get(index).click();
-
+  }
+  public void selectContactById(int id) {
+    wd.findElement(By.cssSelector("input[value='"+ id +"']")).click();
   }
 
-  public void initContactModification(int index) {
-    click(By.xpath("//table[@id='maintable']/tbody/tr[" + (index + 2) + "]/td[8]/a/img"));
+  public void initContactModification(int id) {
+//    wd.findElement(By.xpath("//table[@id='maintable']/tbody/tr[" + id+ "]/td[8]/a/img"));
+    wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
+  }
+  private void initContactModificationByID(int id) {
+
+//    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+    wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
+
+    System.out.println(id);
   }
 
   public void updateContactForm() {
@@ -72,14 +84,21 @@ public class ContactHelper extends BaseHelper {
     selectContact(index);
     deleteSelectedContact();
   }
+  public void delete(ContactData contact) {
+    selectContactById(contact.getId());
+    deleteSelectedContact();
+  }
 
-  public void modify(ContactData contact, int index) {
-    selectContact(index);
-    initContactModification(index);
+  public void modify(ContactData contact) {
+    System.out.println("Передается в modify ="+contact.getId());
+    selectContactById(contact.getId());
+    initContactModificationByID(contact.getId());
     fillContactForm(contact, false);
     updateContactForm();
     returnHomePage();
   }
+
+
 
   public boolean isThereAContact() {
     return isElementPresent(By.name("selected[]"));
@@ -89,8 +108,8 @@ public class ContactHelper extends BaseHelper {
     return wd.findElements(By.name("selected[]")).size();
   }
 
-  public List<ContactData> List() {
-    List<ContactData> contacts = new ArrayList<ContactData>();
+  public Set<ContactData> all() {
+    Set<ContactData> contacts = new HashSet<ContactData>();
     List<WebElement> elements = wd.findElements(By.cssSelector("tr[name='entry']"));
     for (WebElement element : elements) {
       List<WebElement> cells = element.findElements(By.tagName("td"));
@@ -101,4 +120,6 @@ public class ContactHelper extends BaseHelper {
     }
     return contacts;
   }
+
+
 }
