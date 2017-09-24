@@ -22,10 +22,8 @@ public class ContactCreationTests extends TestBase {
             .withMobile("+7(000)123-12-12").withHome("+7(495)123-12-12")
             .withEmail("222@mail.ru").withYear("1980").withNote("домофон 130").withGroup("Друзья");
     app.Contact().create(contact, true);
-
+    assertThat(app.Contact().count(), equalTo(before.size() + 1));
     Contacts after = app.Contact().all();
-    assertThat(after.size(), equalTo(before.size() + 1));
-
     assertThat(after, equalTo(before.withAdded(
             contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }

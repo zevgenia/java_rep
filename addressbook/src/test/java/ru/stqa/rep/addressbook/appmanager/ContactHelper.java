@@ -8,9 +8,7 @@ import org.testng.Assert;
 import ru.stqa.rep.addressbook.model.ContactData;
 import ru.stqa.rep.addressbook.model.Contacts;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class ContactHelper extends BaseHelper {
 
@@ -45,19 +43,19 @@ public class ContactHelper extends BaseHelper {
     }
   }
 
-  public void selectContact(int index) {
-    wd.findElements(By.name("selected[]")).get(index).click();
+  public int count() {
+    return wd.findElements(By.name("selected[]")).size();
   }
+
   public void selectContactById(int id) {
-    wd.findElement(By.cssSelector("input[value='"+ id +"']")).click();
+    wd.findElement(By.cssSelector("input[value='" + id + "']")).click();
   }
 
   private void initContactModificationByID(int id) {
 
 //    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
-    wd.findElement(By.cssSelector("a[href='edit.php?id="+id+"']")).click();
+    wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
 
-    System.out.println(id);
   }
 
   public void updateContactForm() {
@@ -67,29 +65,27 @@ public class ContactHelper extends BaseHelper {
   public void deleteSelectedContact() {
     click(By.xpath("//div[@id='content']/form[2]/div[2]/input"));
     wd.switchTo().alert().accept();
-
   }
 
   public void create(ContactData contact, boolean b) {
     fillContactForm(contact, b);
     submitContactForm();
-    contactCache =null;
+    contactCache = null;
     returnHomePage();
   }
 
   public void delete(ContactData contact) {
     selectContactById(contact.getId());
     deleteSelectedContact();
-    contactCache =null;
+    contactCache = null;
   }
 
   public void modify(ContactData contact) {
-    System.out.println("Передается в modify ="+contact.getId());
     selectContactById(contact.getId());
     initContactModificationByID(contact.getId());
     fillContactForm(contact, false);
     updateContactForm();
-    contactCache =null;
+    contactCache = null;
     returnHomePage();
   }
 
@@ -100,7 +96,7 @@ public class ContactHelper extends BaseHelper {
   private Contacts contactCache = null;
 
   public Contacts all() {
-    if (contactCache != null){
+    if (contactCache != null) {
       return new Contacts(contactCache);
     }
 

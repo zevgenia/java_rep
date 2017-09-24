@@ -18,7 +18,6 @@ public class BaseHelper {
     wd.findElement(locator).click();
   }
   protected void type(By locator, String text) {
-    System.out.println("локатор "+locator);
     click(locator);
 
     if (text != null){
