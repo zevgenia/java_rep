@@ -7,9 +7,7 @@ repositories {
 dependencies {
     compile 'org.testng:testng:6.11'
 	compile 'org.seleniumhq.selenium:selenium-java:3.5.2'
-//    compile 'org.seleniumhq.webdriver:webdriver-firefox:0.9.7376'
-//    compile 'org.seleniumhq.webdriver:webdriver-chrome:0.9.7376'
-//    compile 'org.seleniumhq.webdriver:webdriver-ie:0.9.7376'
-//    compile 'org.seleniumhq.webdriver:webdriver-selenium:0.9.7376'
+    compile 'org.hamcrest:java-hamcrest:2.0.0.0'
+
 }
 
