@@ -9,6 +9,7 @@ public class ContactData {
   private String address;
   private String mobile;
   private String home;
+  private String work;
   private String email;
   private String year;
   private String note;
@@ -71,7 +72,10 @@ public class ContactData {
     this.home = home;
     return this;
   }
-
+  public ContactData withWork(String home) {
+    this.work = work;
+    return this;
+  }
   public ContactData withEmail(String email) {
     this.email = email;
     return this;
@@ -115,7 +119,9 @@ public class ContactData {
   public String getHome() {
     return home;
   }
-
+  public String getWork() {
+    return work;
+  }
   public String getEmail() {
     return email;
   }
