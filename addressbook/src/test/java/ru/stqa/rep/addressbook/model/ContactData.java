@@ -14,11 +14,8 @@ public class ContactData {
   private String year;
   private String note;
   private String group;
+  private String allPhones;
 
-
-  public int getId() {
-    return id;
-  }
 
   public ContactData withId(int id) {
     this.id = id;
@@ -45,6 +42,10 @@ public class ContactData {
     return this;
   }
 
+  public ContactData withAllPhones(String allPhones) {
+    this.allPhones = allPhones;
+    return this;
+  }
   public ContactData withMobile(String mobile) {
     this.mobile = mobile;
     return this;
@@ -78,6 +79,10 @@ public class ContactData {
     return this;
   }
 
+
+  public int getId() {
+    return id;
+  }
 
   public String getFirstname() {
     return firstname;
@@ -123,6 +128,11 @@ public class ContactData {
     return group;
   }
 
+  public String getAllPhones() {
+    return allPhones;
+  }
+
+
   @Override
   public String toString() {
     return "ContactData{" +
@@ -150,5 +160,6 @@ public class ContactData {
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     return result;
   }
+
 
 }

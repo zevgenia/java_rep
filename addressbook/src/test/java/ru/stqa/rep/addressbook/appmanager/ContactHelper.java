@@ -108,16 +108,15 @@ public class ContactHelper extends BaseHelper {
       List<WebElement> cells = element.findElements(By.tagName("td"));
       String firstname = cells.get(2).getText();
       String lastname = cells.get(1).getText();
-      String[] phones = cells.get(5).getText().split("\n");
+      String allPhones = cells.get(5).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       contactCache.add(new ContactData().withId(id).withFirstname(firstname)
-              .withLastname(lastname).withHome(phones[0]).withMobile(phones[1]).withWork(phones[2]));
+              .withLastname(lastname).withAllPhones(allPhones));
     }
     return new Contacts(contactCache);
   }
 
-
-  public ContactData InfoFromEditForm(ContactData contact) {
+  public ContactData infoFromEditForm(ContactData contact) {
     initContactModificationByID(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
@@ -128,4 +127,5 @@ public class ContactHelper extends BaseHelper {
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname).withHome(home).withMobile(mobile).withWork(work);
 
   }
+
 }
