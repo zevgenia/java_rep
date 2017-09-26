@@ -1,13 +1,30 @@
 package ru.stqa.rep.addressbook.tests;
 
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.rep.addressbook.model.ContactData;
+
+import java.util.Arrays;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 public class ContactPhoneTests extends TestBase{
 
+    @BeforeMethod
+
+    public void endsurePrecondition() {
+//    app.goTo().groupPage();
+        app.goTo().gotoHomePage();
+        if (app.contact().all().size() == 0) {
+            app.goTo().gotoNewContact();
+            app.contact().create(new ContactData().withFirstname("Надежда").withMiddlname("Ивановна")
+                    .withLastname("Сидорова").withAddress("ул.Изюмская, д.1, кв.130")
+                    .withMobile("+7(499)123-12-12").withHome("+7(495)123-12-12").withWork("+7(495)555-55-55")
+                    .withEmail("222@mail.ru").withYear("1980").withNote("домофон 130").withGroup("Друзья"), true);
+        }
+    }
     private ContactData contactInfoFromEditForm;
     private ContactData contact;
 
@@ -15,30 +32,20 @@ public class ContactPhoneTests extends TestBase{
 
     public void testContactPhones(){
         app.goTo().gotoHomePage();
-        ContactData contact = app.contact().all().iterator().next();
-        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact);
+        ContactData contact = app.contact().all().iterator().next(); //загружаем множество контактов с гл.страницы и выбираем контакт случ.образом
+        ContactData contactInfoFromEditForm = app.contact().infoFromEditForm(contact); //загружает иформацию из формы со страницы редактирования
 
         assertThat(contact.getAllPhones(), equalTo(mergePhones(contactInfoFromEditForm)));
-        assertThat(contact.getMobile(), equalTo(cleaned(contactInfoFromEditForm.getMobile())));
-        assertThat(contact.getWork(), equalTo(cleaned(contactInfoFromEditForm.getWork())));
+        System.out.println("сравниваем "+ contact.getAllPhones()+" и "+ mergePhones(contactInfoFromEditForm));
     }
-
 
     private String mergePhones(ContactData contact) {
-        String result = "";
-        if(contact.getHome() != null ){
-            result = result + contact + contact.getHome();
 
-        }
-
-        return result;
-
+       return Arrays.asList(contact.getHome(),contact.getMobile(),contact.getWork())
+               .stream().filter((s) -> !s.equals("")).map(ContactPhoneTests::cleaned).collect(Collectors.joining("\n"));
     }
 
-
-    public String cleaned (String phone){
-        return phone.replaceAll("\\s", "").replaceAll("[-()]", "");
-
+    public static String cleaned (String phone){
+        return phone.replaceAll("\\s", "").replaceAll("[-()]", ""); //очищает от лишних символов
     }
-
 }

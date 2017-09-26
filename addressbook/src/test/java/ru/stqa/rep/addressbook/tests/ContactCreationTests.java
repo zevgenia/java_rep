@@ -15,15 +15,15 @@ public class ContactCreationTests extends TestBase {
   public void testContactCreation() {
 //    app.goTo().groupPage();
     app.goTo().gotoHomePage();
-    Contacts before = app.Contact().all();
+    Contacts before = app.contact().all();
     app.gotoNewContact();
     ContactData contact = new ContactData().withFirstname("Надежда").withMiddlname("Ивановна")
             .withLastname("Сидорова").withAddress("ул.Изюмская, д.1, кв.130")
             .withMobile("+7(499)123-12-12").withHome("+7(495)123-12-12").withWork("+7(495)555-55-55")
             .withEmail("222@mail.ru").withYear("1980").withNote("домофон 130").withGroup("Друзья");
-    app.Contact().create(contact, true);
-    assertThat(app.Contact().count(), equalTo(before.size() + 1));
-    Contacts after = app.Contact().all();
+    app.contact().create(contact, true);
+    assertThat(app.contact().count(), equalTo(before.size() + 1));
+    Contacts after = app.contact().all();
     assertThat(after, equalTo(before.withAdded(
             contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }

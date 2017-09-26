@@ -16,11 +16,9 @@ public class ContactData {
   private String group;
   private String allPhones;
 
-
   public ContactData withId(int id) {
     this.id = id;
     return this;
-
   }
 
   public ContactData withFirstname(String firstname) {
