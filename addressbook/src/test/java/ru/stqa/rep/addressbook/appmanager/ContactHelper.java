@@ -37,7 +37,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("notes"), contactData.getNote());
 
     if (creation) {
-//      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //нет списка групп
+//      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //нет списка групп-берем по умолчанию
       new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); //есть список групп
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
@@ -54,10 +54,9 @@ public class ContactHelper extends BaseHelper {
 
   private void initContactModificationByID(int id) {
 
-//    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
-//        wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
     wd.findElement(By.cssSelector("a[href='edit.php?id=" + id + "']")).click();
-
+//    wd.findElement(By.cssSelector(String.format("a[href='edit.php?id=%s']", id))).click();
+//    wd.findElement(By.xpath(String.format("//input[@value='%s']/../../td[8]/a", id))).click();
   }
 
   public void updateContactForm() {
@@ -110,9 +109,10 @@ public class ContactHelper extends BaseHelper {
       String lastname = cells.get(1).getText();
       String allPhones = cells.get(5).getText();//загружаем телефоны в виде одного куска текста
       String allEmails = cells.get(4).getText();//загружаем email в виде одного куска текста
+      String address = cells.get(3).getText();
       int id = Integer.parseInt(element.findElement(By.tagName("input")).getAttribute("value"));
       contactCache.add(new ContactData().withId(id).withFirstname(firstname)
-              .withLastname(lastname).withAllPhones(allPhones).withAllEmails(allEmails));
+              .withLastname(lastname).withAddress(address).withAllEmails(allEmails).withAllPhones(allPhones));
     }
     return new Contacts(contactCache);
   }
@@ -121,6 +121,7 @@ public class ContactHelper extends BaseHelper {
     initContactModificationByID(contact.getId());
     String firstname = wd.findElement(By.name("firstname")).getAttribute("value");
     String lastname = wd.findElement(By.name("lastname")).getAttribute("value");
+    String adddress = wd.findElement(By.name("address")).getAttribute("value");
     String home = wd.findElement(By.name("home")).getAttribute("value");
     String mobile = wd.findElement(By.name("mobile")).getAttribute("value");
     String work = wd.findElement(By.name("work")).getAttribute("value");
@@ -130,8 +131,7 @@ public class ContactHelper extends BaseHelper {
 
     wd.navigate().back();
     return new ContactData().withId(contact.getId()).withFirstname(firstname).withLastname(lastname)
-            .withHome(home).withMobile(mobile).withWork(work).withEmail(email).withEmail2(email2)
-            .withEmail3(email3);
+            .withAddress(adddress).withHome(home).withMobile(mobile).withWork(work)
+            .withEmail(email).withEmail2(email2).withEmail3(email3);
   }
-
 }
