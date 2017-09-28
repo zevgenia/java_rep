@@ -28,6 +28,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("firstname"), contactData.getFirstname());
     type(By.name("middlename"), contactData.getMiddlname());
     type(By.name("lastname"), contactData.getLastname());
+    attach(By.name("photo"), contactData.getPhoto());
     type(By.name("address"), contactData.getAddress());
     type(By.name("home"), contactData.getHome());
     type(By.name("mobile"), contactData.getMobile());
@@ -35,6 +36,7 @@ public class ContactHelper extends BaseHelper {
     type(By.name("email"), contactData.getEmail());
     type(By.name("byear"), contactData.getYear());
     type(By.name("notes"), contactData.getNote());
+
 
     if (creation) {
 //      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //нет списка групп-берем по умолчанию
