@@ -1,5 +1,6 @@
 package ru.stqa.rep.addressbook.generators;
 
+import org.junit.runners.Parameterized;
 import ru.stqa.rep.addressbook.model.GroupData;
 
 import java.io.File;
@@ -10,6 +11,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GroupDataGenerator {
+
+
+  public int count;
+
 
   public static  void main (String args[]) throws IOException {
 
