@@ -2,6 +2,7 @@ package ru.stqa.rep.addressbook.generators;
 
 import com.beust.jcommander.JCommander;
 import com.beust.jcommander.Parameter;
+import com.beust.jcommander.ParameterException;
 import ru.stqa.rep.addressbook.model.GroupData;
 
 import java.io.File;
@@ -10,6 +11,8 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.beust.jcommander.JCommander.newBuilder;
 
 public class  GroupDataGenerator{
 
@@ -21,10 +24,19 @@ public class  GroupDataGenerator{
 
   public static void main(String args[]) throws IOException {
     GroupDataGenerator generator = new GroupDataGenerator();
-    new JCommader(generator, args);
 
+//    JCommander.newBuilder().addObject(generator).build().parse(args);
+    JCommander jCommander = new JCommander(generator);
+
+    try {
+      jCommander.parse(args);
+    } catch (ParameterException ex){
+      jCommander.usage();
+      return;
+    }
     generator.run();
-  }
+    }
+
   private void run() throws IOException {
     List<GroupData> groups = generateGroups(count);
     save(groups,new File(file));
@@ -37,7 +49,7 @@ public class  GroupDataGenerator{
     }
     writer.close();
     }
-  private void List<GroupData> generateGroups(int count) {
+  private List<GroupData> generateGroups(int count) {
     List<GroupData> groups = new ArrayList<GroupData>();
     for (int i = 0; i < count; i++) {
       groups.add(new GroupData().withName(String.format("Группа %s", i))
