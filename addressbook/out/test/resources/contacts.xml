@@ -1,0 +1,20 @@
+<list>
+  <contact>
+    <firstname>Надежда 0</firstname>
+    <lastname>Сидорова 0</lastname>
+    <address>ул.Изюмская 12 0</address>
+    <group>Друзья</group>
+  </contact>
+  <contact>
+    <firstname>Надежда 1</firstname>
+    <lastname>Сидорова 1</lastname>
+    <address>ул.Изюмская 12 1</address>
+    <group>Друзья</group>
+  </contact>
+  <contact>
+    <firstname>Надежда 2</firstname>
+    <lastname>Сидорова 2</lastname>
+    <address>ул.Изюмская 12 2</address>
+    <group>Друзья</group>
+  </contact>
+</list>

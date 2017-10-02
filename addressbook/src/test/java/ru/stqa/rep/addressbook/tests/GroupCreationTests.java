@@ -1,17 +1,17 @@
 package ru.stqa.rep.addressbook.tests;
 
-import com.sun.java.swing.plaf.windows.WindowsTreeUI;
 import com.thoughtworks.xstream.XStream;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.rep.addressbook.model.GroupData;
 import ru.stqa.rep.addressbook.model.Groups;
 
-import java.io.*;
-import java.util.ArrayList;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -21,8 +21,6 @@ public class GroupCreationTests extends TestBase {
 
   @DataProvider()
   public Iterator<Object[]> validGroups() throws IOException {
-    List<Object[]> list = new ArrayList<Object[]>();
-
     BufferedReader reader = new BufferedReader(new FileReader(new File("src/test/resources/groups.xml")));
     String xml = "";
     String line = reader.readLine();
@@ -33,7 +31,7 @@ public class GroupCreationTests extends TestBase {
     XStream xStream = new XStream();
     xStream.processAnnotations(GroupData.class);
     List<GroupData> groups = (List<GroupData>) xStream.fromXML(xml);
-    return groups.stream().map((g)-> new Object[]{g}).collect(Collectors.toList()).iterator();
+    return groups.stream().map((g) -> new Object[]{g}).collect(Collectors.toList()).iterator();
 
   }
 
@@ -48,11 +46,9 @@ public class GroupCreationTests extends TestBase {
     assertThat(app.group().count(), equalTo(before.size() + 1));
     Groups after = app.group().all();
     System.out.println("Было: " + before.size() + " Стало: " + after.size());
-
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
   }
-
 
   @Test(enabled = false)
 
@@ -64,7 +60,6 @@ public class GroupCreationTests extends TestBase {
     assertThat(app.group().count(), equalTo(before.size()));
     Groups after = app.group().all();
     System.out.println("Было: " + before.size() + " Стало: " + after.size());
-
     assertThat(after, equalTo(before));
   }
 
