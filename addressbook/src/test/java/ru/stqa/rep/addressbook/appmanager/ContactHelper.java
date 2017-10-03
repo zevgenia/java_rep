@@ -92,11 +92,7 @@ public class ContactHelper extends BaseHelper {
     returnHomePage();
   }
 
-  public boolean isThereAContact() {
-    return isElementPresent(By.name("selected[]"));
-  }
-
-  private Contacts contactCache = null;
+   private Contacts contactCache = null;
 
   public Contacts all() {
     if (contactCache != null) {
