@@ -1,17 +1,17 @@
 [
   {
     "name": "Группа 0",
-    "header": "header 0",
-    "footer": "footer 0"
+    "header": "Группа 0",
+    "footer": "комментарий 0"
   },
   {
     "name": "Группа 1",
-    "header": "header 1",
-    "footer": "footer 1"
+    "header": "Группа 1",
+    "footer": "комментарий 1"
   },
   {
     "name": "Группа 2",
-    "header": "header 2",
-    "footer": "footer 2"
+    "header": "Группа 2",
+    "footer": "комментарий 2"
   }
 ]
