@@ -1,17 +1,17 @@
 <list>
   <group>
-    <name>Группа 0</name>
-    <header>header 0</header>
-    <footer>footer 0</footer>
+    <name>Друзья 0</name>
+    <header>Друзья 0</header>
+    <footer>Домашняя группа, 0 </footer>
   </group>
   <group>
-    <name>Группа 1</name>
-    <header>header 1</header>
-    <footer>footer 1</footer>
+    <name>Друзья 1</name>
+    <header>Друзья 1</header>
+    <footer>Домашняя группа, 1 </footer>
   </group>
   <group>
-    <name>Группа 2</name>
-    <header>header 2</header>
-    <footer>footer 2</footer>
+    <name>Друзья 2</name>
+    <header>Друзья 2</header>
+    <footer>Домашняя группа, 2 </footer>
   </group>
 </list>

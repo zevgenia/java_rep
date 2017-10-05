@@ -82,14 +82,14 @@ public class ContactDataGenerator {
   private List<ContactData> generateContacts(int count) {
     List<ContactData> contacts = new ArrayList<ContactData>();
     for (int i = 0; i < count; i++) {
-      contacts.add(new ContactData().withFirstname(String.format("Надежда %s", i))
-              .withMiddlname(String.format("Ивановна %s", i))
-              .withLastname(String.format("Сидорова %s", i))
-              .withAddress(String.format("ул.Изюмская 12 %s", i))
+      contacts.add(new ContactData().withFirstname(String.format(" %s", i))
+              .withMiddlname(String.format(" %s", i))
+              .withLastname(String.format(" %s", i))
+              .withAddress(String.format(" 12 %s", i))
               .withEmail(String.format("mail%s@mail.ru", i))
               .withMobile(String.format("+7(495)789-45-1%s", i))
-              .withGroup(String.format("Друзья", i))
-              .withNote(String.format("домофон %s", i)));
+              .withGroup(String.format("", i))
+              .withNote(String.format(" %s", i)));
     }
 
     return contacts;

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.rep.addressbook.tests.ContactCreationTests" tests="3" skipped="0" failures="3" errors="0" timestamp="2017-10-05T10:28:10" hostname="GP-WRST21" time="10.151">
+<testsuite name="ru.stqa.rep.addressbook.tests.ContactCreationTests" tests="3" skipped="0" failures="3" errors="0" timestamp="2017-10-05T19:02:57" hostname="ZHENYA" time="45.569">
   <properties/>
-  <testcase name="testContactCreation[0](ContactData{id='2147483647', firstname='РќР°РґРµР¶РґР° 0', lastname='РЎРёРґРѕСЂРѕРІР° 0'})" classname="ru.stqa.rep.addressbook.tests.ContactCreationTests" time="3.985">
-    <failure message="org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'&#10;System info: host: 'GP-WRST21', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_144'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ
+  <testcase name="testContactCreation[0](ContactData{id='2147483647', firstname='РќР°РґРµР¶РґР° 0', lastname='РЎРёРґРѕСЂРѕРІР° 0'})" classname="ru.stqa.rep.addressbook.tests.ContactCreationTests" time="14.849">
+    <failure message="org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'&#10;System info: host: 'ZHENYA', ip: '192.168.0.10', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_144'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'
-System info: host: 'GP-WRST21', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_144'
+System info: host: 'ZHENYA', ip: '192.168.0.10', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_144'
 Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:151)
 	at ru.stqa.rep.addressbook.appmanager.ContactHelper.fillContactForm(ContactHelper.java:43)
@@ -63,11 +63,11 @@ Driver info: driver.version: unknown
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="testContactCreation[1](ContactData{id='2147483647', firstname='РќР°РґРµР¶РґР° 1', lastname='РЎРёРґРѕСЂРѕРІР° 1'})" classname="ru.stqa.rep.addressbook.tests.ContactCreationTests" time="3.095">
-    <failure message="org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'&#10;System info: host: 'GP-WRST21', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_144'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ
+  <testcase name="testContactCreation[1](ContactData{id='2147483647', firstname='РќР°РґРµР¶РґР° 1', lastname='РЎРёРґРѕСЂРѕРІР° 1'})" classname="ru.stqa.rep.addressbook.tests.ContactCreationTests" time="15.681">
+    <failure message="org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'&#10;System info: host: 'ZHENYA', ip: '192.168.0.10', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_144'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'
-System info: host: 'GP-WRST21', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_144'
+System info: host: 'ZHENYA', ip: '192.168.0.10', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_144'
 Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:151)
 	at ru.stqa.rep.addressbook.appmanager.ContactHelper.fillContactForm(ContactHelper.java:43)
@@ -125,11 +125,11 @@ Driver info: driver.version: unknown
 	at java.lang.Thread.run(Thread.java:748)
 </failure>
   </testcase>
-  <testcase name="testContactCreation[2](ContactData{id='2147483647', firstname='РќР°РґРµР¶РґР° 2', lastname='РЎРёРґРѕСЂРѕРІР° 2'})" classname="ru.stqa.rep.addressbook.tests.ContactCreationTests" time="3.068">
-    <failure message="org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'&#10;System info: host: 'GP-WRST21', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_144'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ
+  <testcase name="testContactCreation[2](ContactData{id='2147483647', firstname='РќР°РґРµР¶РґР° 2', lastname='РЎРёРґРѕСЂРѕРІР° 2'})" classname="ru.stqa.rep.addressbook.tests.ContactCreationTests" time="15.024">
+    <failure message="org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ&#10;For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html&#10;Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'&#10;System info: host: 'ZHENYA', ip: '192.168.0.10', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_144'&#10;Driver info: driver.version: unknown" type="org.openqa.selenium.NoSuchElementException">org.openqa.selenium.NoSuchElementException: Cannot locate element with text: Р”СЂСѓР·СЊСЏ
 For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
 Build info: version: '3.5.2', revision: '10229a9', time: '2017-08-21T17:29:55.15Z'
-System info: host: 'GP-WRST21', ip: '192.168.56.1', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_144'
+System info: host: 'ZHENYA', ip: '192.168.0.10', os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.8.0_144'
 Driver info: driver.version: unknown
 	at org.openqa.selenium.support.ui.Select.selectByVisibleText(Select.java:151)
 	at ru.stqa.rep.addressbook.appmanager.ContactHelper.fillContactForm(ContactHelper.java:43)
@@ -188,65 +188,5 @@ Driver info: driver.version: unknown
 </failure>
   </testcase>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[1507199291017	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/"
-1507199291051	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/"
-1507199291052	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/"
-1507199291104	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/"
-1507199291114	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/"
-1507199291876	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/"
-1507199291956	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/"
-1507199291957	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/"
-1507199291972	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/edit.php"
-1507199292016	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/edit.php"
-1507199292271	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199292556	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199292835	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199293143	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199293544	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199293803	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199294115	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199294345	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199294626	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199294862	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199295014	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/edit.php"
-1507199295063	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/edit.php"
-1507199295064	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/edit.php"
-1507199295130	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/"
-1507199295147	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/"
-1507199295186	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/"
-1507199295213	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/"
-1507199295215	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/"
-1507199295226	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/edit.php"
-1507199295257	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/edit.php"
-1507199295501	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199295788	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199296100	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199296406	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199296696	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199296922	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199297220	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199297451	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199297737	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199297957	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199298095	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/edit.php"
-1507199298134	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/edit.php"
-1507199298134	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/edit.php"
-1507199298190	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/"
-1507199298204	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/"
-1507199298250	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/"
-1507199298274	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/"
-1507199298276	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/"
-1507199298287	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/edit.php"
-1507199298314	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/edit.php"
-1507199298554	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199298850	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199299161	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199299452	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199299743	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199299986	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199300272	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199300506	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199300796	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-1507199301033	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
-]]></system-err>
+  <system-err><![CDATA[]]></system-err>
 </testsuite>
