@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ru.stqa.rep.addressbook.tests.GroupCreationTests" tests="3" skipped="0" failures="0" errors="0" timestamp="2017-10-05T00:37:15" hostname="ZHENYA" time="39.678">
+  <properties/>
+  <testcase name="testGroupCreation[0](GroupData{name='Р“СЂСѓРїРїР° 0', id='2147483647', footer='footer 0'})" classname="ru.stqa.rep.addressbook.tests.GroupCreationTests" time="15.738"/>
+  <testcase name="testGroupCreation[1](GroupData{name='Р“СЂСѓРїРїР° 1', id='2147483647', footer='footer 1'})" classname="ru.stqa.rep.addressbook.tests.GroupCreationTests" time="12.057"/>
+  <testcase name="testGroupCreation[2](GroupData{name='Р“СЂСѓРїРїР° 2', id='2147483647', footer='footer 2'})" classname="ru.stqa.rep.addressbook.tests.GroupCreationTests" time="11.874"/>
+  <system-out><![CDATA[Р‘С‹Р»Рѕ: 9 РЎС‚Р°Р»Рѕ: 10
+Р‘С‹Р»Рѕ: 10 РЎС‚Р°Р»Рѕ: 11
+Р‘С‹Р»Рѕ: 11 РЎС‚Р°Р»Рѕ: 12
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
