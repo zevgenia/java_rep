@@ -3,9 +3,10 @@ package ru.stqa.rep.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import ru.stqa.rep.addressbook.model.ContactData;
 import ru.stqa.rep.addressbook.model.GroupData;
 import ru.stqa.rep.addressbook.model.Groups;
 
@@ -22,7 +23,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class GroupCreationTests extends TestBase {
 
+
+
   @DataProvider()
+
   public Iterator<Object[]> valiGroupsFromJson() throws IOException {
     try (BufferedReader reader = new BufferedReader(new FileReader(new File
             ("src/test/resources/groups.json")))) {
@@ -58,20 +62,16 @@ public class GroupCreationTests extends TestBase {
 
 
   @Test(dataProvider = "valiGroupsFromJson")
-
   public void testGroupCreation(GroupData group) {
-
     app.goTo().groupPage();
     Groups before = app.group().all();
-
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size() + 1));
     Groups after = app.group().all();
-    System.out.println("Было: " + before.size() + " Стало: " + after.size());
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
-  }
 
+  }
     @Test(enabled = false)
 
   public void testBadGroupCreation() {
@@ -81,7 +81,6 @@ public class GroupCreationTests extends TestBase {
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size()));
     Groups after = app.group().all();
-    System.out.println("Было: " + before.size() + " Стало: " + after.size());
     assertThat(after, equalTo(before));
   }
 

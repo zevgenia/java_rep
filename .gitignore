@@ -55,3 +55,4 @@ addressbook/build/tmp/testContacts/jar_extract_3855833543721355546_tmp
 addressbook/build/tmp/testContacts/jar_extract_3808769214895050209_tmp
 addressbook/build/tmp/testContacts/jar_extract_5546236537967238843_tmp
 addressbook/build/tmp/testContacts/jar_extract_583803893788445173_tmp
+*.log
