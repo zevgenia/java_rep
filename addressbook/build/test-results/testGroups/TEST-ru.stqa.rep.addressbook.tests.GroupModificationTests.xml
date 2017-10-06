@@ -1,7 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="ru.stqa.rep.addressbook.tests.GroupModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-05T20:19:00" hostname="ZHENYA" time="10.131">
+<testsuite name="ru.stqa.rep.addressbook.tests.GroupModificationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2017-10-06T07:02:43" hostname="GP-WRST21" time="2.216">
   <properties/>
-  <testcase name="GroupModification" classname="ru.stqa.rep.addressbook.tests.GroupModificationTests" time="10.131"/>
+  <testcase name="GroupModification" classname="ru.stqa.rep.addressbook.tests.GroupModificationTests" time="2.216"/>
   <system-out><![CDATA[]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[1507273363889	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1507273363917	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/group.php"
+1507273363952	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/group.php"
+1507273363953	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/group.php"
+1507273363970	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/group.php"
+1507273363999	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/group.php"
+1507273364257	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1507273364600	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1507273364903	Marionette	DEBUG	Canceled page load listener because no navigation has been detected
+1507273365005	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/group.php"
+1507273365393	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/group.php"
+1507273365394	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/group.php"
+1507273365406	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/group.php"
+1507273365448	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/group.php"
+1507273365521	Marionette	DEBUG	Received DOM event "beforeunload" for "http://localhost/addressbook/group.php"
+1507273365567	Marionette	DEBUG	Received DOM event "pagehide" for "http://localhost/addressbook/group.php"
+1507273365567	Marionette	DEBUG	Received DOM event "unload" for "http://localhost/addressbook/group.php"
+1507273365579	Marionette	DEBUG	Received DOM event "DOMContentLoaded" for "http://localhost/addressbook/group.php"
+1507273365599	Marionette	DEBUG	Received DOM event "pageshow" for "http://localhost/addressbook/group.php"
+]]></system-err>
 </testsuite>
