@@ -5,6 +5,7 @@ repositories {
 }
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
+
 }
 dependencies {
     compile 'org.testng:testng:6.11'
@@ -47,5 +48,8 @@ task testAll(type: Test) {
     }
     if(project.hasProperty('target')){
         systemProperty('target',"${target}")
+    }
+    tasks.withType(Test) {
+        systemProperty "file.encoding", "UTF-8"
     }
 }

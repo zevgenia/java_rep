@@ -57,10 +57,10 @@ public class GroupDataGenerator {
   }
 
   private void saveAsJson(List<GroupData> groups, File file) throws IOException {
-    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create();
-    String json = gson.toJson(groups);
+    Gson gson = new GsonBuilder().setPrettyPrinting().excludeFieldsWithoutExposeAnnotation().create(); //создание объекта типа json в красивом виде с переводом строки
+    String json = gson.toJson(groups); //преобразуем объект в строку, т.е. сериализация
     try (Writer writer = new FileWriter(file)) {
-      writer.write(json);
+      writer.write(json); //записываем строку в файл
     }
   }
 
