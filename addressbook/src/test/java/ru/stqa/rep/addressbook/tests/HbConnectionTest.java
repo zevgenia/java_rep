@@ -5,9 +5,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
-import org.junit.BeforeClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.rep.addressbook.model.GroupData;
 import java.util.List;
@@ -37,7 +38,7 @@ public class HbConnectionTest {
 
 
   @Test
-  public void HbConnectionTest() {
+  public void testHbConnectionTest() {
 
     logger.info("Start test HbConnectionTest");
 

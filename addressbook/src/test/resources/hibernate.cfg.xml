@@ -15,7 +15,8 @@
 
         <!-- Database connection settings -->
         <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-        <property name="connection.url">localhost:3306/addressbook?useSSL=false&amp;serverTimezone=UTC</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/addressbook?useSSL=false&amp;serverTimezone=UTC
+        </property>
         <property name="connection.username">root</property>
         <property name="connection.password"></property>
 
@@ -23,7 +24,7 @@
         <property name="connection.pool_size">1</property>
 
         <!-- SQL dialect -->
-        <property name="dialect">org.hibernate.dialect.MySQLDialect</property>
+        <property name="dialect">org.hibernate.dialect.MySQL5Dialect</property>
 
         <!-- Disable the second-level cache  -->
         <property name="cache.provider_class">org.hibernate.cache.internal.NoCachingRegionFactory</property>
@@ -35,8 +36,9 @@
         <property name="hbm2ddl.auto">validate</property>
 
         <!-- Names the annotated entity class -->
+
         <mapping class="ru.stqa.rep.addressbook.model.GroupData"/>
-        <mapping class="ru.stqa.rep.addressbook.model.ContactData"/>
+
 
     </session-factory>
 
