@@ -57,7 +57,7 @@ public class ContactData {
 
   @Transient
 //  @Column(name = "byear")
-//  @Type(type = "longtext")
+//  @Type(type = "text")
   private String year;
 
   @Expose
