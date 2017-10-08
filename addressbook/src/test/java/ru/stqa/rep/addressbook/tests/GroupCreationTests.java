@@ -64,10 +64,13 @@ public class GroupCreationTests extends TestBase {
     app.goTo().groupPage();
     app.group().create(group);
     assertThat(app.group().count(), equalTo(before.size() + 1));
+    System.out.println("БЫЛО: "+ app.group().count()+ " СТАЛО: " +(before.size() + 1));
+
     Groups after = app.db().groups();
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
+    System.out.println("СРАВНИВАЕМ "+ before+ "=======И======" +after);
   }
     @Test(enabled = false)
 

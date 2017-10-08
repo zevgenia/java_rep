@@ -24,10 +24,16 @@ public class GroupDeletionTests extends TestBase {
   public void testGroupDeletion() {
     Groups before = app.db().groups();
     GroupData deletedGroup = before.iterator().next();
+    System.out.println("before" +before);
     app.goTo().groupPage();
     app.group().delete(deletedGroup);
     assertEquals(app.group().count(), before.size() - 1);
+    System.out.println("БЫЛО: "+ app.group().count()+ " СТАЛО: " +(before.size()-1));
+
     Groups after = app.db().groups();
+    System.out.println("after" +after);
     assertThat(after, equalTo(before.without(deletedGroup)));
+
+    System.out.println("СРАВНИВАЕМ "+ after+ "=======И======" +before);
   }
 }

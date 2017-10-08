@@ -28,12 +28,14 @@ public class GroupModificationTests extends TestBase {
     app.goTo().groupPage();
     app.group().modify(group);
     assertEquals(app.group().count(), before.size());
+    System.out.println("БЫЛО: "+ app.group().count()+ " СТАЛО: " +(before.size()));
+
     Groups after = app.db().groups();
     before.remove(modifiedGroup);
     before.add(group);
     assertEquals(before, after);
     assertThat(after, equalTo(before.without(modifiedGroup).withAdded(group)));
-
+    System.out.println("СРАВНИВАЕМ "+ after+ "=======И======" +before);
 
   }
 
