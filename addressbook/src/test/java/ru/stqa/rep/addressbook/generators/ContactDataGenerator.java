@@ -85,10 +85,11 @@ public class ContactDataGenerator {
       contacts.add(new ContactData().withFirstname(String.format("Надежда %s", i))
               .withMiddlname(String.format("Ивановна %s", i))
               .withLastname(String.format("Иванова %s", i))
-              .withAddress(String.format("Лениниский просп. 12 %s", i))
+              .withAddress(String.format("Ленинский просп. 12 %s", i))
               .withEmail(String.format("mail%s@mail.ru", i))
+              .withHome(String.format("+7(225)789-45-1%s", i))
               .withMobile(String.format("+7(495)789-45-1%s", i))
-              .withGroup(String.format("Друзья", i))
+              .withWork(String.format("+7(455)7555551%s", i))
               .withNote(String.format("домофон %s", i)));
     }
 
