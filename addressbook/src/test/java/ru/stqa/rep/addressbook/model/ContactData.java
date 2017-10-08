@@ -5,11 +5,9 @@ import com.thoughtworks.xstream.annotations.XStreamAlias;
 import com.thoughtworks.xstream.annotations.XStreamOmitField;
 import org.hibernate.annotations.Type;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.File;
+import java.math.BigInteger;
 
 @XStreamAlias("contact")
 @Entity
@@ -22,12 +20,15 @@ public class ContactData {
   private int id = Integer.MAX_VALUE;
 
   @Expose
+  @Column(name = "firstname")
   private String firstname;
 
   @Expose
+  @Column(name = "middlename")
   private String middlname;
 
   @Expose
+  @Column(name = "lastname")
   private String lastname;
 
   @Expose
@@ -45,6 +46,8 @@ public class ContactData {
   @Type(type = "text")
   private String home;
 
+  @Column(name = "work")
+  @Type(type = "text")
   private String work;
 
   @Expose
@@ -52,6 +55,9 @@ public class ContactData {
   @Type(type = "text")
   private String email;
 
+  @Transient
+//  @Column(name = "byear")
+//  @Type(type = "longtext")
   private String year;
 
   @Expose
@@ -60,13 +66,24 @@ public class ContactData {
   private String note;
 
   @Expose
+  @Transient
   private String group;
-
+  @Transient
   private String allPhones;
+  @Transient
   private String allEmails;
+
+  @Column(name = "email2")
+  @Type(type = "text")
   private String email2;
+
+  @Column(name = "email3")
+  @Type(type = "text")
   private String email3;
-  private File photo;
+
+  @Column(name = "photo")
+  @Type(type = "text")
+  private String photo;
 
 
   public ContactData withId(int id) {
@@ -150,7 +167,7 @@ public class ContactData {
   }
 
   public ContactData withPhoto(File photo) {
-    this.photo = photo;
+    this.photo = photo.getPath();
     return this;
   }
 
@@ -220,7 +237,7 @@ public class ContactData {
   }
 
   public File getPhoto() {
-    return photo;
+    return new File(photo);
   }
 
 

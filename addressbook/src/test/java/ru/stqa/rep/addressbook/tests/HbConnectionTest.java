@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.stqa.rep.addressbook.model.ContactData;
 import ru.stqa.rep.addressbook.model.GroupData;
 import java.util.List;
 
@@ -37,8 +38,8 @@ public class HbConnectionTest {
   }
 
 
-  @Test
-  public void testHbConnectionTest() {
+  @Test (enabled = false)
+  public void testHbConnectionGroupsTest() {
 
     logger.info("Start test HbConnectionTest");
 
@@ -52,6 +53,22 @@ public class HbConnectionTest {
     session.close();
 
 
+    logger.info("Stop test HbConnectionTest");
+  }
+
+  @Test
+  public void testHbConnectionContactsTest() {
+
+    logger.info("Start test HbConnectionTest");
+
+    Session session = sessionFactory.openSession();
+    session.beginTransaction();
+    List<ContactData> result = session.createQuery( "from ContactData" ).list();
+    for (ContactData contact : result) {
+      System.out.println( contact);
+    }
+    session.getTransaction().commit();
+    session.close();
     logger.info("Stop test HbConnectionTest");
   }
 }
