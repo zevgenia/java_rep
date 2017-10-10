@@ -242,6 +242,22 @@ public class ContactData {
 
 
   @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", middlname='" + middlname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", home='" + home + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", note='" + note + '\'' +
+            '}';
+  }
+
+  @Override
   public boolean equals(Object o) {
     if (this == o) return true;
     if (o == null || getClass() != o.getClass()) return false;
@@ -257,8 +273,7 @@ public class ContactData {
     if (home != null ? !home.equals(that.home) : that.home != null) return false;
     if (work != null ? !work.equals(that.work) : that.work != null) return false;
     if (email != null ? !email.equals(that.email) : that.email != null) return false;
-    if (note != null ? !note.equals(that.note) : that.note != null) return false;
-    return group != null ? group.equals(that.group) : that.group == null;
+    return note != null ? note.equals(that.note) : that.note == null;
   }
 
   @Override
@@ -273,17 +288,7 @@ public class ContactData {
     result = 31 * result + (work != null ? work.hashCode() : 0);
     result = 31 * result + (email != null ? email.hashCode() : 0);
     result = 31 * result + (note != null ? note.hashCode() : 0);
-    result = 31 * result + (group != null ? group.hashCode() : 0);
     return result;
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id='" + id + '\'' +
-            ", firstname='" + firstname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            '}';
   }
 
 }
