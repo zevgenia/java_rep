@@ -22,8 +22,6 @@ import static org.testng.Assert.assertEquals;
 
 public class GroupCreationTests extends TestBase {
 
-
-
   @DataProvider()
 
   public Iterator<Object[]> validGroupsFromJson() throws IOException {
