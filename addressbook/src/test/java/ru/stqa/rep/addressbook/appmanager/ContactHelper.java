@@ -34,13 +34,13 @@ public class ContactHelper extends BaseHelper {
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("work"), contactData.getWork());
     type(By.name("email"), contactData.getEmail());
-    type(By.name("byear"), contactData.getYear());
+//    type(By.name("byear"), contactData.getYear());
     type(By.name("notes"), contactData.getNote());
 
 
     if (creation) {
 //      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //нет списка групп-берем по умолчанию
-      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); //есть список групп
+//      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); //есть список групп
     } else {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }

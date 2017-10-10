@@ -41,6 +41,9 @@ task testContacts(type: Test) {
     if(project.hasProperty('target')){
         systemProperty('target',"${target}")
     }
+    if(project.hasProperty('verifyUI')){
+        systemProperty('verifyUI',"${target}")
+    }
 }
 task testAll(type: Test) {
     useTestNG(){
@@ -52,6 +55,10 @@ task testAll(type: Test) {
     if(project.hasProperty('target')){
         systemProperty('target',"${target}")
     }
+    if(project.hasProperty('verifyUI')){
+        systemProperty('verifyUI',"${target}")
+    }
+
     tasks.withType(Test) {
         systemProperty "file.encoding", "UTF-8"
     }

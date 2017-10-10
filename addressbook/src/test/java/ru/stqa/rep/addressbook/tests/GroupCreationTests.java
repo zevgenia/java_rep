@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.testng.Assert.assertEquals;
 
 public class GroupCreationTests extends TestBase {
 
@@ -62,26 +63,31 @@ public class GroupCreationTests extends TestBase {
   public void testGroupCreation(GroupData group) {
     Groups before = app.db().groups();
     app.goTo().groupPage();
+
     app.group().create(group);
-    assertThat(app.group().count(), equalTo(before.size() + 1));
-    System.out.println("БЫЛО: "+ app.group().count()+ " СТАЛО: " +(before.size() + 1));
 
     Groups after = app.db().groups();
+
+    assertEquals(after.size(), before.size()+1);
+    System.out.println("БЫЛО: "+ before.size()+ " СТАЛО: " +after.size());
+
     assertThat(after, equalTo(
             before.withAdded(group.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
-    System.out.println("СРАВНИВАЕМ "+ before+ "=======И======" +after);
+    verifyGroupListInUI();
   }
+
     @Test(enabled = false)
 
   public void testBadGroupCreation() {
     app.goTo().groupPage();
-    Groups before = app.group().all();
+    Groups before = app.db().groups();
     GroupData group = new GroupData().withName("Друзья'").withHeader("Друзья").withFooter("Домашняя группа");
+
     app.group().create(group);
+
     assertThat(app.group().count(), equalTo(before.size()));
-    Groups after = app.group().all();
+    Groups after = app.db().groups();
     assertThat(after, equalTo(before));
   }
-
 }

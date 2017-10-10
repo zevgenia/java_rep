@@ -14,7 +14,6 @@ public class ContactModificationTests extends TestBase {
   @BeforeMethod
 
   public void endsurePrecondition() {
-//    app.goTo().groupPage();
 
     if (app.db().contacts().size() == 0) {
       app.goTo().gotoHomePage();
@@ -22,7 +21,7 @@ public class ContactModificationTests extends TestBase {
       app.contact().create(new ContactData().withFirstname("Надежда").withMiddlname("Ивановна")
               .withLastname("Сидорова").withAddress("ул.Изюмская, д.1, кв.130")
               .withMobile("+7(499)123-12-12").withHome("+7(495)123-12-12").withWork("+7(495)555-55-55")
-              .withEmail("222@mail.ru").withYear("1980").withNote("домофон 130").withGroup("Друзья"), true);
+              .withEmail("222@mail.ru").withNote("домофон 130").withGroup("Друзья"), true);
     }
   }
 
@@ -30,13 +29,18 @@ public class ContactModificationTests extends TestBase {
 
   public void ContactModification() {
     Contacts before = app.db().contacts();
+
     ContactData modifiedContact = before.iterator().next();
+    System.out.println("modifiedContact "+ before.iterator().next());
+
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Анна")
             .withMiddlname("Ивановна").withLastname("Маркова").withAddress("ул.Изюмская, д.1, кв.130")
             .withMobile("+7(499)123-12-12").withHome("+7(495)123-12-12").withWork("+7(495)555-55-55")
-            .withEmail("222@mail.ru").withYear("1980").withNote("домофон 130").withGroup("Друзья");
+            .withEmail("222@mail.ru").withNote("домофон 130").withGroup("Друзья");
+
     app.goTo().gotoHomePage();
     app.contact().modify(contact);
+
     assertEquals(app.contact().count(), before.size());
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(

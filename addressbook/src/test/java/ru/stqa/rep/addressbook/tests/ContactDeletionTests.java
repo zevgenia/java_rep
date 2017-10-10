@@ -30,13 +30,15 @@ public class ContactDeletionTests extends TestBase {
 
     System.out.println("BEFORE: "+ before);
     ContactData deletedContact = before.iterator().next();
+    System.out.println("deletedContact "+ before.iterator().next());
     app.goTo().gotoHomePage();
     app.contact().delete(deletedContact);
-    app.goTo().groupPage();
+
     app.goTo().gotoHomePage();
     assertEquals(app.contact().count(), before.size() - 1);
     Contacts after = app.db().contacts();
     assertThat(after, equalTo(before.without(deletedContact)));
+    System.out.println("СРАВНИВАЕМ "+ after+ "=======И======" + before.without(deletedContact));
   }
 
 
