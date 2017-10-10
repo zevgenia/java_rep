@@ -31,7 +31,6 @@ public class ContactModificationTests extends TestBase {
     Contacts before = app.db().contacts();
 
     ContactData modifiedContact = before.iterator().next();
-    System.out.println("modifiedContact "+ before.iterator().next());
 
     ContactData contact = new ContactData().withId(modifiedContact.getId()).withFirstname("Анна")
             .withMiddlname("Ивановна").withLastname("Маркова").withAddress("ул.Изюмская, д.1, кв.130")
@@ -42,7 +41,8 @@ public class ContactModificationTests extends TestBase {
     app.contact().modify(contact);
 
     Contacts after = app.db().contacts();
-    assertEquals(after.size(), (before.size()+1));
+    System.out.println("БЫЛО: "+ before.size()+ " СТАЛО: " +after.size());
+    assertEquals(after.size(), (before.size()));
 
     assertThat(after, equalTo(
             before.without(modifiedContact).withAdded(contact)));

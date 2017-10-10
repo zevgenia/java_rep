@@ -69,6 +69,8 @@ public class ContactCreationTests extends TestBase {
 
     assertThat(after.size(), equalTo((before.size() + 1)));
 
+    System.out.println("БЫЛО: "+ before.size()+ " СТАЛО: " +after.size());
+
     assertThat(after, equalTo(before.withAdded(
             contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 

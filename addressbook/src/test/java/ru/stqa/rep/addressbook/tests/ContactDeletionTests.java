@@ -31,16 +31,15 @@ public class ContactDeletionTests extends TestBase {
 
     app.goTo().gotoHomePage();
     app.contact().delete(deletedContact);
+    app.goTo().gotoHomePage();
 
     Contacts after = app.db().contacts();
-    assertEquals(after.size(), before.size() - 1);
-    System.out.println("БЫЛО: "+ before.size()+ " СТАЛО: " +after.size());
 
+    System.out.println("БЫЛО: "+ before.size()+ " СТАЛО: " +after.size());
+    assertEquals(after.size(), (before.size() - 1));
     assertThat(after, equalTo(before.without(deletedContact)));
     System.out.println("СТАРАЯ ПРОВЕРКА ДО: "+ after+ " СТАЛО: " +before.without(deletedContact));
 
     verifyContactListInUI(); //новая проверка
   }
-
-
 }

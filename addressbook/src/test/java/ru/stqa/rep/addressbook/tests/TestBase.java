@@ -28,50 +28,52 @@ public class TestBase {
   Logger logger = LoggerFactory.getLogger(TestBase.class);
 
   protected static final ApplicationManager app
-          = new ApplicationManager(System.getProperty("browser", BrowserType.CHROME));
+          = new ApplicationManager(System.getProperty("browser", BrowserType.FIREFOX));
 
   @BeforeSuite
   public void setUp() throws Exception {
     app.init();
   }
 
-  @AfterSuite (alwaysRun=true)
+  @AfterSuite(alwaysRun = true)
   public void tearDown() {
     app.stop();
   }
 
 
   @BeforeMethod
-  public void logTestStart(Method m, Object[] p)  {
-    logger.info("Start test " +m.getName()+ " with parameters "+ Arrays.asList(p));
+  public void logTestStart(Method m, Object[] p) {
+    logger.info("Start test " + m.getName() + " with parameters " + Arrays.asList(p));
   }
 
-  @AfterMethod (alwaysRun=true)
-  public void logTestStop(Method m){
-    logger.info("Stop test "+m.getName());
+  @AfterMethod(alwaysRun = true)
+  public void logTestStop(Method m) {
+    logger.info("Stop test " + m.getName());
   }
 
   public void verifyGroupListInUI() {
 
-    if (Boolean.getBoolean("verifyUI")){
+    if (Boolean.getBoolean("verifyUI")) {
       Groups dbGroups = app.db().groups();
       Groups uiGroups = app.group().all();
-      assertThat(uiGroups, equalTo(dbGroups.stream().map((g)-> new GroupData().withId(g.getId())
+      assertThat(uiGroups, equalTo(dbGroups.stream().map((g) -> new GroupData().withId(g.getId())
               .withName(g.getName())).collect(Collectors.toSet())));
-      System.out.println("НОВАЯ ПРОВЕРКА "+ dbGroups + "=======И======" + uiGroups);
+      System.out.println("НОВАЯ ПРОВЕРКА " + dbGroups + "=======И======" + uiGroups);
     }
   }
 
   public void verifyContactListInUI() {
 
-    if (Boolean.getBoolean("verifyUI")){
+    if (Boolean.getBoolean("verifyUI")) {
       Contacts dbContacts = app.db().contacts();
       Contacts uiContacts = app.contact().all();
-      assertThat(uiContacts, equalTo(dbContacts.stream().map((g)-> new ContactData().withId(g.getId())
-              .withFirstname(g.getFirstname()).withLastname(g.getLastname()).withMiddlname(g.getMiddlname()).withAddress(g.getAddress())
-                      .withHome(g.getHome()).withMobile(g.getMobile()).withWork(g.getWork()).withEmail(g.getEmail()).withNote(g.getNote()))
-              .collect(Collectors.toSet())));
-      System.out.println("НОВАЯ ПРОВЕРКА "+ dbContacts + "=======И======" + uiContacts);
+      System.out.println("НОВАЯ ПРОВЕРКА " + dbContacts + "=======И======" + uiContacts);
+
+      assertThat(uiContacts, equalTo(dbContacts.stream().map((g) -> new ContactData().withId(g.getId())
+              .withFirstname(g.getFirstname()).withLastname(g.getLastname()).withMiddlname(g.getMiddlname())
+              .withAddress(g.getAddress()).withHome(g.getHome()).withMobile(g.getMobile()).withWork(g.getWork())
+              .withEmail(g.getEmail()).withNote(g.getNote())).collect(Collectors.toSet())));
+
     }
   }
 
