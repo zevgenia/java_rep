@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import ru.stqa.rep.addressbook.model.ContactData;
+import ru.stqa.rep.addressbook.model.Contacts;
 import ru.stqa.rep.addressbook.model.GroupData;
 import java.util.List;
 
@@ -48,6 +49,7 @@ public class HbConnectionTest {
     List<GroupData> result = session.createQuery( "from GroupData where deprecated = '0000-00-00'").list();
     for (GroupData group : result) {
       System.out.println( group);
+
     }
     session.getTransaction().commit();
     session.close();
@@ -64,11 +66,14 @@ public class HbConnectionTest {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00'" ).list();
-    for (ContactData contact : result) {
-      System.out.println( contact);
-    }
+
     session.getTransaction().commit();
     session.close();
     logger.info("Stop test HbConnectionTest");
+
+    for (ContactData contact : result) {
+      System.out.println("КОНТАКТ " + contact);
+      System.out.println("Входит в в группы: " +contact.getGroups());
+    }
   }
 }
