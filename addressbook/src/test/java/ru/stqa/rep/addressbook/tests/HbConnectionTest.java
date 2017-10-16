@@ -63,8 +63,9 @@ public class HbConnectionTest {
 
     logger.info("Start test HbConnectionTest");
 
-    Session session = sessionFactory.openSession();
+    Session session = sessionFactory.openSession(); //инициализация соединения
     session.beginTransaction();
+    //извлекается информация о контакте из БД
     List<ContactData> result = session.createQuery( "from ContactData where deprecated = '0000-00-00'" ).list();
 
     session.getTransaction().commit();

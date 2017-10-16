@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.rep.addressbook.model.ContactData;
 import ru.stqa.rep.addressbook.model.Contacts;
+import ru.stqa.rep.addressbook.model.GroupData;
 import ru.stqa.rep.addressbook.model.Groups;
 
 import java.io.BufferedReader;
@@ -42,7 +43,7 @@ public class ContactCreationTests extends TestBase {
   @DataProvider()
   public Iterator<Object[]> validContactsFromJson() throws IOException {
     try (BufferedReader reader = new BufferedReader(new FileReader(new File
-            ("src/test/resources/contacts.json")))) {
+            ("src/test/resources/contacts1.json")))) {
       String json = "";
       String line = reader.readLine();
       while (line != null) {
@@ -63,25 +64,31 @@ public class ContactCreationTests extends TestBase {
     Groups groups = app.db().groups(); //извлекаем инфорамацию о группах из БД
     File photo = new File("src/test/resources/Koala.jpg");
 
+    // Извлекаем из БД множество контактов ДО
     Contacts before = app.db().contacts();
 
+   // создаем контакт
     app.goTo().gotoHomePage();
     app.gotoNewContact();
     app.contact().create(contact, true);
+    System.out.println("КОНТАКТ " + contact);
+    System.out.println("Входит в в группы: " +contact.getGroups());
 
+  // Извлекаем из БД множество контактов ПОСЛЕ
     Contacts after = app.db().contacts();
-
-    assertThat(after.size(), equalTo((before.size() + 1)));
-
     System.out.println("БЫЛО: "+ before.size()+ " СТАЛО: " +after.size());
 
-    assertThat(after, equalTo(before.withAdded(
+    // проверяем, что контактов стало больше на 1
+    assertThat(after.size(), equalTo((before.size() + 1)));
+
+      assertThat(after, equalTo(before.withAdded(
             contact.withId(after.stream().mapToInt((g) -> g.getId()).max().getAsInt()))));
 
+    // проверяем что в мнтерфейсе то же, что и в БД
     verifyContactListInUI();
   }
 
-  @Test(enabled = false)
+  @Test(enabled = false)   // тест проверки - существует ли файл с фото
   public void testCurrentDir() {
     File currentDir = new File(".");
     File photo = new File("src/test/resources/pic2.PNG");

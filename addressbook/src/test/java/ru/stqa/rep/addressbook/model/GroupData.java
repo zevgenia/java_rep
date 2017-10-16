@@ -37,7 +37,7 @@ public class GroupData {
   @ManyToMany (mappedBy = "groups")
   private Set<ContactData> contacts = new HashSet<ContactData>();
 
-
+// метод позволяет получить список контактов, которые входят в данную группу
   public Contacts getContacts() {
     return new Contacts(contacts);
   }

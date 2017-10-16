@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.thoughtworks.xstream.XStream;
 import ru.stqa.rep.addressbook.model.ContactData;
+import ru.stqa.rep.addressbook.model.GroupData;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -14,6 +15,7 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class ContactDataGenerator {
 
@@ -91,6 +93,7 @@ public class ContactDataGenerator {
               .withMobile(String.format("+7(495)789-45-1%s", i))
               .withWork(String.format("+7(455)7555551%s", i))
               .withNote(String.format("домофон %s", i)));
+
     }
 
     return contacts;

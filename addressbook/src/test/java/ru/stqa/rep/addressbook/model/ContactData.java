@@ -84,11 +84,9 @@ public class ContactData {
   @Type(type = "text")
   private String photo;
 
-  public Groups getGroups() {
-    return new Groups(groups);
-  }
 
-  @ManyToMany (fetch = FetchType.EAGER)
+
+  @ManyToMany (fetch = FetchType.EAGER) //из БД будет извлекаться как можно больше инф. за одно обращение
   @JoinTable(name = "address_in_groups", joinColumns =@JoinColumn(name = "id"),
           inverseJoinColumns= @JoinColumn(name="group_id"))
   private Set<GroupData> groups = new HashSet<GroupData>();
@@ -172,7 +170,10 @@ public class ContactData {
     this.photo = photo.getPath();
     return this;
   }
-
+  public ContactData inGroup (GroupData group){ //добавляет контакт в группу с именем в переменной group
+    groups.add (group);
+    return this;
+  }
 
   public int getId() {
     return id;
@@ -238,34 +239,15 @@ public class ContactData {
     return new File(photo);
   }
 
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
-
-    ContactData that = (ContactData) o;
-
-    if (id != that.id) return false;
-    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
-    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
-    return address != null ? address.equals(that.address) : that.address == null;
-  }
-
-  @Override
-  public int hashCode() {
-    int result = id;
-    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
-    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
-    result = 31 * result + (address != null ? address.hashCode() : 0);
-    return result;
+  // метод позволяет получить список групп, в которые входит данный контакт
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
   @Override
   public String toString() {
     return "ContactData{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
+            "firstname='" + firstname + '\'' +
             ", middlname='" + middlname + '\'' +
             ", lastname='" + lastname + '\'' +
             ", address='" + address + '\'' +
@@ -274,7 +256,42 @@ public class ContactData {
             ", work='" + work + '\'' +
             ", email='" + email + '\'' +
             ", note='" + note + '\'' +
+            ", groups=" + groups +
             '}';
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (o == null || getClass() != o.getClass()) return false;
+
+    ContactData that = (ContactData) o;
+
+    if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
+    if (middlname != null ? !middlname.equals(that.middlname) : that.middlname != null) return false;
+    if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
+    if (address != null ? !address.equals(that.address) : that.address != null) return false;
+    if (mobile != null ? !mobile.equals(that.mobile) : that.mobile != null) return false;
+    if (home != null ? !home.equals(that.home) : that.home != null) return false;
+    if (work != null ? !work.equals(that.work) : that.work != null) return false;
+    if (email != null ? !email.equals(that.email) : that.email != null) return false;
+    if (note != null ? !note.equals(that.note) : that.note != null) return false;
+    return groups != null ? groups.equals(that.groups) : that.groups == null;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = firstname != null ? firstname.hashCode() : 0;
+    result = 31 * result + (middlname != null ? middlname.hashCode() : 0);
+    result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
+    result = 31 * result + (address != null ? address.hashCode() : 0);
+    result = 31 * result + (mobile != null ? mobile.hashCode() : 0);
+    result = 31 * result + (home != null ? home.hashCode() : 0);
+    result = 31 * result + (work != null ? work.hashCode() : 0);
+    result = 31 * result + (email != null ? email.hashCode() : 0);
+    result = 31 * result + (note != null ? note.hashCode() : 0);
+    result = 31 * result + (groups != null ? groups.hashCode() : 0);
+    return result;
   }
 
 }

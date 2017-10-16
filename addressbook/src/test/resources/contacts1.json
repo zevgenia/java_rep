@@ -1,0 +1,13 @@
+[
+  {
+    "firstname": "Надежда 0",
+    "middlname": "Ивановна 0",
+    "lastname": "Иванова 0",
+    "address": "Ленинский просп. 12 0",
+    "mobile": "+7(495)789-45-10",
+    "home": "+7(225)789-45-10",
+    "email": "mail0@mail.ru",
+    "note": "домофон 0",
+    "groups": [{"contactData.groups[0]": "Друзья"}]
+  }
+  ]

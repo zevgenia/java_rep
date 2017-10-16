@@ -7,10 +7,15 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import ru.stqa.rep.addressbook.model.ContactData;
 import ru.stqa.rep.addressbook.model.Contacts;
+import ru.stqa.rep.addressbook.model.GroupData;
+import ru.stqa.rep.addressbook.model.Groups;
 
 import java.util.List;
 
 public class ContactHelper extends BaseHelper {
+
+
+  private Groups groups;
 
   public ContactHelper(WebDriver wd) {
     super(wd);
@@ -34,14 +39,31 @@ public class ContactHelper extends BaseHelper {
     type(By.name("mobile"), contactData.getMobile());
     type(By.name("work"), contactData.getWork());
     type(By.name("email"), contactData.getEmail());
-//    type(By.name("byear"), contactData.getYear());
     type(By.name("notes"), contactData.getNote());
 
+    if (creation) { // true - форма создания контакта
 
-    if (creation) {
-//      new Select(wd.findElement(By.name("new_group"))).selectByIndex(0); //нет списка групп-берем по умолчанию
-//      new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroup()); //есть список групп
-    } else {
+//    GroupData newgroup = new GroupData().withName("Друзья'").withHeader("Друзья").withFooter("Домашняя группа");
+
+//проверяем есть ли в списке контакта группы
+      if (contactData.getGroups().size() == 0) { // не нужно добавлять контакт ни в какую группу [none]
+        new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
+      } else {
+        if (contactData.getGroups().size() > 0) {
+//дополнительная проверка - можем добавить только в одну группу
+          Assert.assertTrue(contactData.getGroups().size() == 1);
+          if (true) {
+            //              new Select(wd.findElement(By.name("new_group"))).selectByValue(String.valueOf(contactData.getGroups()));
+            new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
+          } else {
+            System.out.println(" в списке контакта больше 1 группы - не заполняем группу - none");
+            new Select(wd.findElement(By.name("new_group"))).selectByIndex(0);
+          }
+        }
+      }
+    }
+//      }
+    else { //false - форма модификации контакта
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
@@ -92,7 +114,7 @@ public class ContactHelper extends BaseHelper {
     returnHomePage();
   }
 
-   private Contacts contactCache = null;
+  private Contacts contactCache = null;
 
   public Contacts all() {
     if (contactCache != null) {
