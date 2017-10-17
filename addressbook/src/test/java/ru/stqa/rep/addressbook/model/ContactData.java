@@ -170,6 +170,24 @@ public class ContactData {
     this.photo = photo.getPath();
     return this;
   }
+
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", middlname='" + middlname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", home='" + home + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", note='" + note + '\'' +
+            ", groups=" + groups +
+            '}';
+  }
+
   public ContactData inGroup (GroupData group){ //добавляет контакт в группу с именем в переменной group
     groups.add (group);
     return this;
@@ -242,22 +260,6 @@ public class ContactData {
   // метод позволяет получить список групп, в которые входит данный контакт
   public Groups getGroups() {
     return new Groups(groups);
-  }
-
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "firstname='" + firstname + '\'' +
-            ", middlname='" + middlname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            ", address='" + address + '\'' +
-            ", mobile='" + mobile + '\'' +
-            ", home='" + home + '\'' +
-            ", work='" + work + '\'' +
-            ", email='" + email + '\'' +
-            ", note='" + note + '\'' +
-            ", groups=" + groups +
-            '}';
   }
 
   @Override

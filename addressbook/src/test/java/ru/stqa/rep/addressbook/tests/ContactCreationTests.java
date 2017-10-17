@@ -61,8 +61,7 @@ public class ContactCreationTests extends TestBase {
 
   public void testContactCreation(ContactData contact) {
 
-    Groups groups = app.db().groups(); //извлекаем инфорамацию о группах из БД
-    File photo = new File("src/test/resources/Koala.jpg");
+     File photo = new File("src/test/resources/Koala.jpg");
 
     // Извлекаем из БД множество контактов ДО
     Contacts before = app.db().contacts();
