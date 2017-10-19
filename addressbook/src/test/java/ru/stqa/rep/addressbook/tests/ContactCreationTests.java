@@ -60,7 +60,7 @@ public class ContactCreationTests extends TestBase {
   @Test(dataProvider = "validContactsFromJson")
 
   public void testContactCreation(ContactData contact) {
-
+    Groups groups = app.db().groups(); //извлекаем список групп из БД
      File photo = new File("src/test/resources/Koala.jpg");
 
     // Извлекаем из БД множество контактов ДО

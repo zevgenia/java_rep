@@ -39,7 +39,7 @@ public class HbConnectionTest {
   }
 
 
-  @Test (enabled = false)
+  @Test
   public void testHbConnectionGroupsTest() {
 
     logger.info("Start test HbConnectionTest");
@@ -47,18 +47,19 @@ public class HbConnectionTest {
     Session session = sessionFactory.openSession();
     session.beginTransaction();
     List<GroupData> result = session.createQuery( "from GroupData where deprecated = '0000-00-00'").list();
-    for (GroupData group : result) {
-      System.out.println( group);
 
-    }
     session.getTransaction().commit();
     session.close();
-
-
     logger.info("Stop test HbConnectionTest");
+
+    for (GroupData group : result) {
+      System.out.println("ГРУППА "+ group);
+      System.out.println("Содержит контакты: "+ group.getContacts());
+    }
   }
 
-  @Test
+
+  @Test (enabled = false)
   public void testHbConnectionContactsTest() {
 
     logger.info("Start test HbConnectionTest");

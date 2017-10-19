@@ -253,15 +253,6 @@ public class ContactData {
     return allEmails;
   }
 
-  public File getPhoto() {
-    return new File(photo);
-  }
-
-  // метод позволяет получить список групп, в которые входит данный контакт
-  public Groups getGroups() {
-    return new Groups(groups);
-  }
-
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -269,6 +260,7 @@ public class ContactData {
 
     ContactData that = (ContactData) o;
 
+    if (id != that.id) return false;
     if (firstname != null ? !firstname.equals(that.firstname) : that.firstname != null) return false;
     if (middlname != null ? !middlname.equals(that.middlname) : that.middlname != null) return false;
     if (lastname != null ? !lastname.equals(that.lastname) : that.lastname != null) return false;
@@ -283,7 +275,8 @@ public class ContactData {
 
   @Override
   public int hashCode() {
-    int result = firstname != null ? firstname.hashCode() : 0;
+    int result = id;
+    result = 31 * result + (firstname != null ? firstname.hashCode() : 0);
     result = 31 * result + (middlname != null ? middlname.hashCode() : 0);
     result = 31 * result + (lastname != null ? lastname.hashCode() : 0);
     result = 31 * result + (address != null ? address.hashCode() : 0);
@@ -294,6 +287,15 @@ public class ContactData {
     result = 31 * result + (note != null ? note.hashCode() : 0);
     result = 31 * result + (groups != null ? groups.hashCode() : 0);
     return result;
+  }
+
+  public File getPhoto() {
+    return new File(photo);
+  }
+
+  // метод позволяет получить список групп, в которые входит данный контакт
+  public Groups getGroups() {
+    return new Groups(groups);
   }
 
 }
