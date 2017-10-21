@@ -3,7 +3,6 @@ package ru.stqa.rep.addressbook.tests;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.thoughtworks.xstream.XStream;
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import ru.stqa.rep.addressbook.model.ContactData;
@@ -58,15 +57,6 @@ public class ContactCreationTests extends TestBase {
     }
   }
 
-  @BeforeMethod
-  //если нет ни одной группы то надо какую-нибудь создать
-  public void ensurePreconditionGroup() {
-
-    if (app.db().groups().size() == 0) {
-      app.goTo().groupPage();
-      app.group().create(new GroupData().withName("Друзья").withHeader("Друзья").withFooter("Домашняя группа"));
-    }
-  }
   @Test(dataProvider = "validContactsFromJson")
 
   public void testContactCreation(ContactData contact) {
