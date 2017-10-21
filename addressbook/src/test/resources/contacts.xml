@@ -3,30 +3,12 @@
     <firstname>Надежда 0</firstname>
     <middlname>Ивановна 0</middlname>
     <lastname>Иванова 0</lastname>
-    <address>Лениниский просп. 12 0</address>
+    <address>Ленинский просп. 12 0</address>
     <mobile>+7(495)789-45-10</mobile>
+    <home>+7(225)789-45-10</home>
+    <work>+7(455)755-55-510</work>
     <email>mail0@mail.ru</email>
     <note>домофон 0</note>
-    <group>Друзья</group>
-  </contact>
-  <contact>
-    <firstname>Надежда 1</firstname>
-    <middlname>Ивановна 1</middlname>
-    <lastname>Иванова 1</lastname>
-    <address>Лениниский просп. 12 1</address>
-    <mobile>+7(495)789-45-11</mobile>
-    <email>mail1@mail.ru</email>
-    <note>домофон 1</note>
-    <group>Друзья</group>
-  </contact>
-  <contact>
-    <firstname>Надежда 2</firstname>
-    <middlname>Ивановна 2</middlname>
-    <lastname>Иванова 2</lastname>
-    <address>Лениниский просп. 12 2</address>
-    <mobile>+7(495)789-45-12</mobile>
-    <email>mail2@mail.ru</email>
-    <note>домофон 2</note>
-    <group>Друзья</group>
+    <groups/>
   </contact>
 </list>

@@ -19,43 +19,44 @@ public class ContactData {
   @XStreamOmitField
   @Id
   @Column(name = "id")
-  private int id = Integer.MAX_VALUE;
+  private int id = 0;
 
   @Expose
   @Column(name = "firstname")
-  private String firstname;
+  private String firstname = "";
 
   @Expose
   @Column(name = "middlename")
-  private String middlname;
+  private String middlname = "";
 
   @Expose
   @Column(name = "lastname")
-  private String lastname;
+  private String lastname = "";
 
   @Expose
   @Column(name = "address")
   @Type(type = "text")
-  private String address;
+  private String address = "";
 
   @Expose
   @Column(name = "mobile")
   @Type(type = "text")
-  private String mobile;
+  private String mobile = "";
 
   @Expose
   @Column(name = "home")
   @Type(type = "text")
-  private String home;
+  private String home = "";
 
+  @Expose
   @Column(name = "work")
   @Type(type = "text")
-  private String work;
+  private String work = "";
 
   @Expose
   @Column(name = "email")
   @Type(type = "text")
-  private String email;
+  private String email = "";
 
   @Transient
 //  @Column(name = "byear")
@@ -65,7 +66,7 @@ public class ContactData {
   @Expose
   @Column(name = "notes")
   @Type(type = "text")
-  private String note;
+  private String note = "";
 
   @Transient
   private String allPhones;
@@ -84,11 +85,11 @@ public class ContactData {
   @Type(type = "text")
   private String photo;
 
+  @Expose
+  @ManyToMany(fetch = FetchType.EAGER) //из БД будет извлекаться как можно больше инф. за одно обращение
+  @JoinTable(name = "address_in_groups", joinColumns = @JoinColumn(name = "id"),
+          inverseJoinColumns = @JoinColumn(name = "group_id"))
 
-
-  @ManyToMany (fetch = FetchType.EAGER) //из БД будет извлекаться как можно больше инф. за одно обращение
-  @JoinTable(name = "address_in_groups", joinColumns =@JoinColumn(name = "id"),
-          inverseJoinColumns= @JoinColumn(name="group_id"))
   private Set<GroupData> groups = new HashSet<GroupData>();
 
   public ContactData withId(int id) {
@@ -131,13 +132,13 @@ public class ContactData {
     return this;
   }
 
-  public ContactData withWork(String work) {
-    this.work = work;
+  public ContactData withEmail(String email) {
+    this.email = email;
     return this;
   }
 
-  public ContactData withEmail(String email) {
-    this.email = email;
+  public ContactData withWork(String work) {
+    this.work = work;
     return this;
   }
 
@@ -171,25 +172,8 @@ public class ContactData {
     return this;
   }
 
-  @Override
-  public String toString() {
-    return "ContactData{" +
-            "id=" + id +
-            ", firstname='" + firstname + '\'' +
-            ", middlname='" + middlname + '\'' +
-            ", lastname='" + lastname + '\'' +
-            ", address='" + address + '\'' +
-            ", mobile='" + mobile + '\'' +
-            ", home='" + home + '\'' +
-            ", work='" + work + '\'' +
-            ", email='" + email + '\'' +
-            ", note='" + note + '\'' +
-            ", groups=" + groups +
-            '}';
-  }
-
-  public ContactData inGroup (GroupData group){ //добавляет контакт в группу с именем в переменной group
-    groups.add (group);
+  public ContactData inGroup(GroupData group) { //добавляет контакт в группу с именем в переменной group
+    groups.add(group);
     return this;
   }
 
@@ -253,6 +237,15 @@ public class ContactData {
     return allEmails;
   }
 
+  public File getPhoto() {
+    return new File(photo);
+  }
+
+  // метод позволяет получить список групп, в которые входит данный контакт
+  public Groups getGroups() {
+    return new Groups(groups);
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) return true;
@@ -289,13 +282,20 @@ public class ContactData {
     return result;
   }
 
-  public File getPhoto() {
-    return new File(photo);
+  @Override
+  public String toString() {
+    return "ContactData{" +
+            "id=" + id +
+            ", firstname='" + firstname + '\'' +
+            ", middlname='" + middlname + '\'' +
+            ", lastname='" + lastname + '\'' +
+            ", address='" + address + '\'' +
+            ", mobile='" + mobile + '\'' +
+            ", home='" + home + '\'' +
+            ", work='" + work + '\'' +
+            ", email='" + email + '\'' +
+            ", note='" + note + '\'' +
+            ", groups=" + groups +
+            '}';
   }
-
-  // метод позволяет получить список групп, в которые входит данный контакт
-  public Groups getGroups() {
-    return new Groups(groups);
-  }
-
 }

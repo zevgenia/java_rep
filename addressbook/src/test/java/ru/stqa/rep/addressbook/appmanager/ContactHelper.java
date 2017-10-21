@@ -44,8 +44,7 @@ public class ContactHelper extends BaseHelper {
     if (creation) { // true - форма создания контакта
       if (contactData.getGroups().size() > 0) {
         Assert.assertTrue(contactData.getGroups().size() == 1); //дополнительная проверка - можем добавить только в одну группу
-        new Select(wd.findElement(By.name("new_group")))
-                .selectByVisibleText(contactData.getGroups().iterator().next().getName());
+        new Select(wd.findElement(By.name("new_group"))).selectByVisibleText(contactData.getGroups().iterator().next().getName());
       }
     } else {
       System.out.println(" в списке контакта больше 1 группы или нет групп - не заполняем группу - none");
@@ -54,7 +53,6 @@ public class ContactHelper extends BaseHelper {
       Assert.assertFalse(isElementPresent(By.name("new_group")));
     }
   }
-
 
   public int count() {
     return wd.findElements(By.name("selected[]")).size();

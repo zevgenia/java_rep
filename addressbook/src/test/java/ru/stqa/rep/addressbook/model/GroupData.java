@@ -34,6 +34,7 @@ public class GroupData {
   @Type(type = "text")
   private String footer;
 
+  @Expose
   @ManyToMany (mappedBy = "groups", fetch = FetchType.EAGER)
   private Set<ContactData> contacts = new HashSet<ContactData>();
 
